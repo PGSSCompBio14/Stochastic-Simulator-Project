@@ -1,7 +1,7 @@
 import random as rng
 import math
 
-def computeProp(molecules, k, reactions): #Finds the propensity of each reaction ocurring, returns a list of the propensities
+def computeProp(molecules, k, reactions): #Finds the propensity of each reaction occurring, returns a list of the propensities
     props = []
     i = 0
     cVal = 0
@@ -98,12 +98,12 @@ def reactionsEdit(strippedLine):
     rxnDict.append(productDict)
     reactions.append(rxnDict)
     
-def parse():
+def parse(): ## goes through text file and establishes initial conditions
     file = open("parse.txt")
-    blockCount = 0
+    blockCount = 0 ## keeps track of which section of the file is being parsed
     for line in file.readlines():
-        strippedLine = line.strip()
-        if strippedLine != "":
+        strippedLine = line.strip() ## deletes all white space before and after text
+        if strippedLine != "": ## skips if blank line
             if blockCount == 0:
                 if strippedLine == "INITIALIZATION:":
                     blockCount = 1
@@ -124,7 +124,6 @@ def parse():
 
 def main():
     parse()
-    
     rng.seed(124213)
     time = 0.0
     iter = 0
