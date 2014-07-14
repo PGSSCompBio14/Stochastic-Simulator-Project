@@ -5,7 +5,7 @@ def computeProp(molecules, k, reactions): #Finds the propensity of each reaction
     props = []
     i = 0
     cVal = 0
-    for reaction in reactions:
+    for reaction in reactions: #goes through and computes the propensity for each reaction
             cVal= k[i]
             for key in reaction[0]:
                     if reaction[0][key] < 0:
