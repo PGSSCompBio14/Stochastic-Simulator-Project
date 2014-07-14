@@ -10,7 +10,7 @@ def computeProp(molecules, k, reactions): #Finds the propensity of each reaction
             for key in reaction[0]:
                     if reaction[0][key] < 0:
                             cVal = cVal * molecules[key]
-                    if (molecules[key] + reaction[0][key]) < 0:
+                    if (molecules[key] + reaction[0][key]) < 0: # asdf
                             cVal = 0
             props.append(cVal)
             i= i+1
