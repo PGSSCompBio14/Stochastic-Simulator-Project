@@ -16,26 +16,25 @@ def computeProp(molecules, k, reactions): #Finds the propensity of each reaction
             i= i+1
     return props
                             
-def reactUpdater(molecules, reaction):
-    for sideOfReaction in reaction: #molecule = key in dictionary
+def reactUpdater(molecules, reaction): # Carries out given reaction
+    for sideOfReaction in reaction: 
             for molecule in sideOfReaction:
                 molecules[molecule] += sideOfReaction[molecule]
            
 
-def open_output_files(objects):
+def open_output_files(objects): #Chooses files and prepares them to output to
     files= {}
     
-    for molecule in objects: #thing = (ex. "A", "B", "C"), types = molecules 
-            
+    for molecule in objects:  
             files[molecule] =open(molecule + ".txt", "w") #in future, possibly add conditions
 
     return (files)
 
-def write_data_to_output(outs, timer, molecules):
+def write_data_to_output(outs, timer, molecules): #Writes time and number of molecules to each of the files
     for mol in molecules:
             outs[mol].write("%5.4e  %d\n" %(timer, molecules[mol]))
 
-def close_output_files(outputs):
+def close_output_files(outputs): #CLoses all output files
     for ou in outputs:
             outputs[ou].close()
 
