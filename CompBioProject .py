@@ -105,7 +105,7 @@ def parse(): ## goes through text file and establishes initial conditions
                 if "REACTIONS" in strippedLine:
                     blockCount = 3
             else:
-                if strippedLine == "END":
+                if "END" in strippedLine:
                     blockCount = 0
                 else:
                     if blockCount == 1:
