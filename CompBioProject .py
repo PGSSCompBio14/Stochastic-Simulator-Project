@@ -152,7 +152,7 @@ def main():
     close_output_files(filesdict)
 
 
-definedConditions = {"maxIter", "maxTime", "outputFrequency"}   
+definedConditions = {}   
 numberOfMolecules = {}
 ka = []
 reactions = []
