@@ -8,7 +8,7 @@ def computeProp(numberOfMolecules, k, reactions): #Finds the propensity of each 
     for reaction in reactions: #goes through and computes the propensity for each reaction
             currentPropensity= k[i]
             for key in reaction[0]:
-                for int in range(0, abs(reaction[key])):
+                for int in range(0, abs(reaction[0][key])):
                     currentPropensity *= numberOfMolecules[key] - int
             props.append(currentPropensity) 
             i = i+1
@@ -42,7 +42,7 @@ def initEdit(strippedLine):
     elif "t" in strippedLine:
         definedConditions["maxTime"] = int(strippedLine.strip(" t="))
     elif "of" in strippedLine:
-        defineConditions["outputFrequency"] = int(strippedLine.strip(" of="))
+        definedConditions["outputFrequency"] = int(strippedLine.strip(" of="))
 
 def moleculesEdit(strippedLine):
     list = strippedLine.split("=")
@@ -124,7 +124,7 @@ def main():
     
     filesdict = open_output_files(numberOfMolecules)
     
-    while ((time < maxTime) & (iter < maxIter)):
+    while ((time < definedConditions["maxTime"]) & (iter < definedConditions["maxIter"])):
             propensities = computeProp(numberOfMolecules, ka, reactions)
             totalProps = sum(propensities)
             if(totalProps != 0):
@@ -158,5 +158,3 @@ ka = []
 reactions = []
 
 main()
-
-
