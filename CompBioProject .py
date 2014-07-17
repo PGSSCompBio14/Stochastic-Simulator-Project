@@ -132,18 +132,16 @@ def main():
                 
                 tau = 1.0/totalProps*math.log(1/rand1)
                 time += tau
+                
                 rand2 = rng.random()
                 threshold = totalProps * rand2
-                summation = 0
-                count = 0
+                summation = propensities[0]
+                count = 1
 
                 while threshold > summation:
                         summation += propensities[count]
                         count +=1
-                        
-                if threshold == 0:
-                    count = 1
-                    
+
                 reactUpdater(numberOfMolecules, reactions[count - 1])
             
             if(iter % definedConditions["outputFrequency"] == 0):
