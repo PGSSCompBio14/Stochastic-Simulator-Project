@@ -140,7 +140,10 @@ def main():
                 while threshold > summation:
                         summation += propensities[count]
                         count +=1
-
+                        
+                if threshold == 0:
+                    count = 1
+                    
                 reactUpdater(numberOfMolecules, reactions[count - 1])
             
             if(iter % definedConditions["outputFrequency"] == 0):
