@@ -13,7 +13,7 @@ def computeProp(numberOfMolecules, k, reactions): #Finds the propensity of each 
                     if (numberOfMolecules[key] + reaction[0][key]) < 0:
                             currentPropensity = 0
             props.append(currentPropensity) 
-            i= i+1
+            i = i+1
     return props
                             
 def reactUpdater(numberOfMolecules, reaction): # Carries out given reaction
