@@ -1,7 +1,7 @@
 import random as rng
 import math
 
-def computeProp(molecules, k, reactions): #Finds the propensity of each reaction occurring, returns a list of the propensities
+def computeProp(numberOfMolecules, k, reactions): #Finds the propensity of each reaction occurring, returns a list of the propensities
     props = []
     i = 0
     currentPropensity = 0
@@ -9,17 +9,17 @@ def computeProp(molecules, k, reactions): #Finds the propensity of each reaction
             currentPropensity= k[i]
             for key in reaction[0]:
                     if reaction[0][key] < 0:
-                            currentPropensity = currentPropensity * molecules[key]
-                    if (molecules[key] + reaction[0][key]) < 0:
+                            currentPropensity = currentPropensity * numberOfMolecules[key]
+                    if (numberOfMolecules[key] + reaction[0][key]) < 0:
                             currentPropensity = 0
             props.append(currentPropensity) 
             i= i+1
     return props
                             
-def reactUpdater(molecules, reaction): # Carries out given reaction
+def reactUpdater(numberOfMolecules, reaction): # Carries out given reaction
     for sideOfReaction in reaction: 
             for molecule in sideOfReaction:
-                molecules[molecule] += sideOfReaction[molecule]
+                numberOfMolecules[molecule] += sideOfReaction[molecule]
            
 
 def open_output_files(objects): #Chooses files and prepares them to output to
@@ -30,11 +30,11 @@ def open_output_files(objects): #Chooses files and prepares them to output to
 
     return (files)
 
-def write_data_to_output(outs, timer, molecules): #Writes time and number of molecules to each of the files
-    for mol in molecules:
-            outs[mol].write("%5.4e  %d\n" %(timer, molecules[mol]))
+def write_data_to_output(outs, timer, numberOfMolecules): #Writes time and number of molecules to each of the files
+    for mol in numberOfMolecules:
+            outs[mol].write("%5.4e  %d\n" %(timer, numberOfMolecules[mol]))
 
-def close_output_files(outputs): #CLoses all output files
+def close_output_files(outputs): #Closes all output files
     for ou in outputs:
             outputs[ou].close()
 
@@ -51,7 +51,7 @@ def initEdit(strippedLine):
 
 def moleculesEdit(strippedLine):
     list = strippedLine.split("=")
-    molecules[list[0].strip()] = int(list[1])
+    numberOfMolecules[list[0].strip()] = int(list[1])
 
 
 def reactionsEdit(strippedLine):
@@ -102,7 +102,7 @@ def parse(): ## goes through text file and establishes initial conditions
     blockCount = 0 ## keeps track of which section of the file is being parsed
     for line in file.readlines():
         strippedLine = line.strip() ## deletes all white space before and after text
-        if strippedLine != "": ## skips if blank line
+        if strippedLine != "":
             if blockCount == 0:
                 if strippedLine == "INITIALIZATION:":
                     blockCount = 1
@@ -129,10 +129,10 @@ def main():
     outputFreq = 1
     totalProps = 1
     
-    filesdict = open_output_files(molecules)
+    filesdict = open_output_files(numberOfMolecules)
     
     while ((time < maxTime) & (iter < maxIter)):
-            propensities = computeProp(molecules, ka, reactions)
+            propensities = computeProp(numberOfMolecules, ka, reactions)
             totalProps = sum(propensities)
             if(totalProps != 0):
                 rand1 = rng.random()
@@ -148,9 +148,9 @@ def main():
                         summation += propensities[count]
                         count +=1
 
-                reactUpdater(molecules, reactions[count-1])
+                reactUpdater(numberOfMolecules, reactions[count - 1])
             if(iter % outputFreq == 0):
-                    write_data_to_output(filesdict, time, molecules)
+                    write_data_to_output(filesdict, time, numberOfMolecules)
                     
             iter += 1
 
@@ -161,7 +161,7 @@ def main():
     
 maxIter = 0
 maxTime = 0
-molecules = {}
+numberOfMolecules = {}
 ka = []
 reactions = []
 
