@@ -26,7 +26,7 @@ def open_output_files(objects): #Chooses files and prepares them to output to
     files= {}
     
     for molecule in objects:  
-            files[molecule] =open(molecule + ".txt", "w") #in future, possibly add conditions
+            files[molecule] = open(molecule + ".txt", "w") #in future, possibly add conditions
 
     return (files)
 
@@ -40,19 +40,15 @@ def close_output_files(outputs): #Closes all output files
 
 def initEdit(strippedLine):
     if "i" in strippedLine:
-            global maxIter
-            maxIter = int(strippedLine.strip(" i="))
-                    
-    else: 
-            if "t" in strippedLine:
-                    global maxTime
-                    maxTime = int(strippedLine.strip(" t="))
-                    
+        definedConditions["maxIter"] = int(strippedLine.strip(" i="))
+    elif "t" in strippedLine:
+        definedConditions["maxTime"] = int(strippedLine.strip(" t="))
+    elif "of" in strippedLine:
+        defineConditions["outputFrequency"] = int(strippedLine.strip(" of="))
 
 def moleculesEdit(strippedLine):
     list = strippedLine.split("=")
     numberOfMolecules[list[0].strip()] = int(list[1])
-
 
 def reactionsEdit(strippedLine):
     
@@ -115,7 +111,7 @@ def parse(): ## goes through text file and establishes initial conditions
                     blockCount = 0
                 else:
                     if blockCount == 1:
-                        maxIter = initEdit(strippedLine)
+                        initEdit(strippedLine)
                     if blockCount == 2:
                         moleculesEdit(strippedLine)
                     if blockCount == 3:
@@ -126,7 +122,6 @@ def main():
     rng.seed(124213)
     time = 0.0
     iter = 0
-    outputFreq = 1
     totalProps = 1
     
     filesdict = open_output_files(numberOfMolecules)
@@ -149,18 +144,16 @@ def main():
                         count +=1
 
                 reactUpdater(numberOfMolecules, reactions[count - 1])
-            if(iter % outputFreq == 0):
+            
+            if(iter % definedConditions["outputFrequency"] == 0):
                     write_data_to_output(filesdict, time, numberOfMolecules)
                     
             iter += 1
-
             
     close_output_files(filesdict)
 
 
-    
-maxIter = 0
-maxTime = 0
+definedConditions = {"maxIter", "maxTime", "outputFrequency"}   
 numberOfMolecules = {}
 ka = []
 reactions = []
