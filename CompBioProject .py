@@ -124,7 +124,7 @@ def main():
     
     filesdict = open_output_files(numberOfMolecules)
     
-    while ((time < maxTime) & (iter < maxIter)):
+    while ((time < definedConditions["maxTime"]) & (iter < definedConditions["maxIter"])):
             propensities = computeProp(numberOfMolecules, ka, reactions)
             totalProps = sum(propensities)
             if(totalProps != 0):
