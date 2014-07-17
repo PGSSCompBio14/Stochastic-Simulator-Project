@@ -8,7 +8,7 @@ def computeProp(numberOfMolecules, k, reactions): #Finds the propensity of each 
     for reaction in reactions: #goes through and computes the propensity for each reaction
             currentPropensity= k[i]
             for key in reaction[0]:
-                for int in range(0, abs(reaction[0][key])):
+                for int in range(0, abs(reaction[key]))
                     currentPropensity *= numberOfMolecules[key] - int
             props.append(currentPropensity) 
             i = i+1
@@ -42,7 +42,7 @@ def initEdit(strippedLine):
     elif "t" in strippedLine:
         definedConditions["maxTime"] = int(strippedLine.strip(" t="))
     elif "of" in strippedLine:
-        definedConditions["outputFrequency"] = int(strippedLine.strip(" of="))
+        defineConditions["outputFrequency"] = int(strippedLine.strip(" of="))
 
 def moleculesEdit(strippedLine):
     list = strippedLine.split("=")
@@ -98,11 +98,11 @@ def parse(): ## goes through text file and establishes initial conditions
         strippedLine = line.strip() ## deletes all white space before and after text
         if strippedLine != "":
             if blockCount == 0:
-                if strippedLine == "INITIALIZATION:":
+                if "INITIALIZATION" in strippedLine:
                     blockCount = 1
-                if strippedLine == "MOLECULES:":
+                if "MOLECULES" in strippedLine:
                     blockCount = 2
-                if strippedLine == "REACTIONS:":
+                if "REACTIONS" in strippedLine:
                     blockCount = 3
             else:
                 if strippedLine == "END":
@@ -124,7 +124,7 @@ def main():
     
     filesdict = open_output_files(numberOfMolecules)
     
-    while ((time < definedConditions["maxTime"]) & (iter < definedConditions["maxIter"])):
+    while ((time < maxTime) & (iter < maxIter)):
             propensities = computeProp(numberOfMolecules, ka, reactions)
             totalProps = sum(propensities)
             if(totalProps != 0):
@@ -158,3 +158,5 @@ ka = []
 reactions = []
 
 main()
+
+
