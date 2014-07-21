@@ -1,15 +1,15 @@
 import random as rng
 import math
 
-def computeProp(numberOfMolecules, k, reactions): #Finds the propensity of each reaction occurring, returns a list of the propensities
+def computeProp(numberOfMolecules, k, reactions): #finds the propensity of each reaction, returns a list of the propensities
     props = []
     i = 0
     currentPropensity = 0
-    for reaction in reactions: #goes through and computes the propensity for each reaction
+    for reaction in reactions: 
             currentPropensity= k[i]
             for key in reaction[0]:
-                for int in range(0, abs(reaction[0][key])):
-                    currentPropensity *= numberOfMolecules[key] - int
+                for int in range(0, abs(reaction[0][key])): #if there are not enough reactant molecules, propensity set to zero
+                    currentPropensity *= numberOfMolecules[key] - int 
             props.append(currentPropensity) 
             i = i+1
     return props
@@ -24,11 +24,11 @@ def open_output_files(outputMolecules): #Chooses files and prepares them to outp
     files = {}
     
     for key in outputMolecules:  
-            files[key] = open(outputMolecules[key], "w") #in future, possibly add conditions
+            files[key] = open(outputMolecules[key], "w") #opens outputs file for specified molecules
 
     return files
 
-def write_data_to_output(outs, timer, numberOfMolecules, outputMolecules): #Writes time and number of molecules to each of the files
+def write_data_to_output(outs, timer, numberOfMolecules, outputMolecules): #updates data files with current time and number of molecules
     for molecule in outputMolecules:
             outs[molecule].write("%5.4e  %d\n" %(timer, numberOfMolecules[molecule]))
 
