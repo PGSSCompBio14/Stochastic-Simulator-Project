@@ -186,7 +186,6 @@ def main():
                     times.append(time)
                     nOM = deepcopy(numberOfMolecules)
                     currentMolecules.append(nOM)
-                    print currentMolecules
 
                     
             iter += 1
