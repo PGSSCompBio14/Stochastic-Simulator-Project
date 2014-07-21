@@ -10,17 +10,14 @@ def plotOutput(times, currentMolecules, numberOfMolecules):
         moleculeData = []
         for integer in range(0, len(currentMolecules)):
             moleculeData.append(currentMolecules[integer][molecule])
-        plt.plot(times, moleculeData)
-    plt.show()
-    #area = [3.14159, 12.56636, 28.27431, 50.26544, 78.53975, 113.09724]
-    #square = [1.0, 4.0, 9.0, 16.0, 25.0, 36.0]
+        plt.plot(times, moleculeData, label = molecule)
     #plt.plot(radius, area, label='Circle')
     #plt.plot(radius, square, marker='o', linestyle='--', color='r', label='Square')
-    #plt.xlabel('Radius/Side')
-    #plt.ylabel('Area')
-    #plt.title('Area of Shapes')
-    #plt.legend()
-    #plt.show()
+    plt.xlabel('Time Elapsed (seconds)')
+    plt.ylabel('Number of Molecules')
+    plt.title('Number of Molecules Vs. Time')
+    plt.legend()
+    plt.show()
     
 def computeProp(numberOfMolecules, k, reactions): #Finds the propensity of each reaction occurring, returns a list of the propensities
     props = []
@@ -206,7 +203,6 @@ ka = []
 reactions = []
 
 main()
-
 
 
 
