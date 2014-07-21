@@ -118,12 +118,13 @@ def outputEdit(strippedLine):
         else:
             definedConditions["Plot"] = False
     
-def parse(): ## goes through text file and establishes initial conditions
+## The main parser method that goes through the text file and extracts initial conditions
+def parse(): 
     file = open("parse.txt")
     blockCount = 0 ## keeps track of which section of the file is being parsed
     for line in file.readlines():
-        strippedLine = line.strip() ## deletes all white space before and after text
-        if strippedLine != "":
+        strippedLine = line.strip()
+        if strippedLine != "": #skips empty lines
             if blockCount == 0:
                 if "INITIALIZATION" in strippedLine:
                     blockCount = 1
