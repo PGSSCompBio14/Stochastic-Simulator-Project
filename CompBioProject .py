@@ -20,13 +20,13 @@ def reactUpdater(numberOfMolecules, reaction): # Carries out given reaction
                 numberOfMolecules[molecule] += sideOfReaction[molecule]
            
 
-def open_output_files(objects): #Chooses files and prepares them to output to
-    files= {}
+def open_output_files(outputMolecules): #Chooses files and prepares them to output to
+    files = {}
     
-    for molecule in objects:  
-            files[molecule] = open(molecule + ".txt", "w") #in future, possibly add conditions
+    for key in outputMolecules:  
+            files[key] = open(outputMolecules[key], "w") #in future, possibly add conditions
 
-    return (files)
+    return files
 
 def write_data_to_output(outs, timer, numberOfMolecules): #Writes time and number of molecules to each of the files
     for mol in numberOfMolecules:
@@ -91,6 +91,22 @@ def reactionsEdit(strippedLine):
     rxnDict.append(productDict)
     reactions.append(rxnDict)
     
+def outputEdit(strippedLine):
+    if "\"" in strippedLine:
+        initialSplit = strippedLine.split("=")
+        moleculeName = initialSplit[0].strip()
+        outputFileName = initialSplit[1].strip(" \"")
+        outputMolecules[moleculeName] = outputFileName
+    else:
+        initialSplit = strippedLine.split("=")
+        plotString = initialSplit[1].strip()
+        print plotString
+        print plotString.upper().startswith("T")
+        if plotString.upper().startswith("T"):
+            definedConditions["Plot"] = True
+        else:
+            definedConditions["Plot"] = False
+    
 def parse(): ## goes through text file and establishes initial conditions
     file = open("parse.txt")
     blockCount = 0 ## keeps track of which section of the file is being parsed
@@ -104,6 +120,8 @@ def parse(): ## goes through text file and establishes initial conditions
                     blockCount = 2
                 if "REACTIONS" in strippedLine:
                     blockCount = 3
+                if "OUTPUT" in strippedLine:
+                    blockCount = 4
             else:
                 if "END" in strippedLine:
                     blockCount = 0
@@ -114,6 +132,8 @@ def parse(): ## goes through text file and establishes initial conditions
                         moleculesEdit(strippedLine)
                     if blockCount == 3:
                         reactionsEdit(strippedLine)
+                    if blockCount == 4:
+                        outputEdit(strippedLine)
 
 def main():
     parse()
@@ -122,7 +142,7 @@ def main():
     iter = 0
     totalProps = 1
     
-    filesdict = open_output_files(numberOfMolecules)
+    filesdict = open_output_files(outputMolecules)
     
     while ((time < definedConditions["maxTime"]) & (iter < definedConditions["maxIter"])):
             propensities = computeProp(numberOfMolecules, ka, reactions)
@@ -152,6 +172,8 @@ def main():
     close_output_files(filesdict)
 
 
+
+outputMolecules = {}
 definedConditions = {}   
 numberOfMolecules = {}
 ka = []
