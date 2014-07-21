@@ -28,9 +28,9 @@ def open_output_files(outputMolecules): #Chooses files and prepares them to outp
 
     return files
 
-def write_data_to_output(outs, timer, numberOfMolecules): #Writes time and number of molecules to each of the files
-    for mol in numberOfMolecules:
-            outs[mol].write("%5.4e  %d\n" %(timer, numberOfMolecules[mol]))
+def write_data_to_output(outs, timer, numberOfMolecules, outputMolecules): #Writes time and number of molecules to each of the files
+    for molecule in outputMolecules:
+            outs[molecule].write("%5.4e  %d\n" %(timer, numberOfMolecules[molecule]))
 
 def close_output_files(outputs): #Closes all output files
     for ou in outputs:
@@ -165,7 +165,7 @@ def main():
                 reactUpdater(numberOfMolecules, reactions[count - 1])
             
             if(iter % definedConditions["outputFrequency"] == 0):
-                    write_data_to_output(filesdict, time, numberOfMolecules)
+                    write_data_to_output(filesdict, time, numberOfMolecules, outputMolecules)
                     
             iter += 1
             
