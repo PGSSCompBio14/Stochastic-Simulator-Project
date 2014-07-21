@@ -20,15 +20,15 @@ def reactUpdater(numberOfMolecules, reaction): # Carries out given reaction
                 numberOfMolecules[molecule] += sideOfReaction[molecule]
            
 
-def open_output_files(outputMolecules): #Chooses files and prepares them to output to
+def open_output_files(outputMolecules): ##Creates and opens output files for specified molecules
     files = {}
     
     for key in outputMolecules:  
-            files[key] = open(outputMolecules[key], "w") #opens outputs file for specified molecules
+            files[key] = open(outputMolecules[key], "w") 
 
     return files
 
-def write_data_to_output(outs, timer, numberOfMolecules, outputMolecules): #updates data files with current time and number of molecules
+def write_data_to_output(outs, timer, numberOfMolecules, outputMolecules): #Updates data files with current time and number of molecules
     for molecule in outputMolecules:
             outs[molecule].write("%5.4e  %d\n" %(timer, numberOfMolecules[molecule]))
 
@@ -36,7 +36,10 @@ def close_output_files(outputs): #Closes all output files
     for ou in outputs:
             outputs[ou].close()
 
-def initEdit(strippedLine):
+
+#parses the initialization section of the input file
+#stores values for maximum time, maximum iterations, and output frequency in the definedConditions dictionary
+def initEdit(strippedLine): 
     if "i" in strippedLine:
         definedConditions["maxIter"] = int(strippedLine.strip(" i="))
     elif "t" in strippedLine:
@@ -44,10 +47,17 @@ def initEdit(strippedLine):
     elif "of" in strippedLine:
         definedConditions["outputFrequency"] = int(strippedLine.strip(" of="))
 
+#parses the molecules section of the input file
+#stores the initial number of each molecule in the numberOfMolecules dictionary
 def moleculesEdit(strippedLine):
     list = strippedLine.split("=")
     numberOfMolecules[list[0].strip()] = int(list[1])
 
+#parses the reactions section of the input file
+#stores each reaction into the reactions list
+#within each reaction, there is a reactants and products dictionary
+#the key for each molecule is its name and the value is the number of molecules that are added or subtracted 
+    #each time the reaction is carried out
 def reactionsEdit(strippedLine):
     
     rxnDict = []
@@ -90,7 +100,10 @@ def reactionsEdit(strippedLine):
     rxnDict.append(reactantDict)
     rxnDict.append(productDict)
     reactions.append(rxnDict)
-    
+   
+#parses the output section of the input file
+#determines which molecules are to be plotted and stores the user's desired names for the ouput files
+#adds a variable with key "Plot" to the definedConditions dictionary whose value (boolean) determines whether or not a graph will be plotted 
 def outputEdit(strippedLine):
     if "\"" in strippedLine:
         initialSplit = strippedLine.split("=")
