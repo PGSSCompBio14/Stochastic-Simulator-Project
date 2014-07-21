@@ -42,7 +42,7 @@ def initEdit(strippedLine):
     elif "t" in strippedLine:
         definedConditions["maxTime"] = int(strippedLine.strip(" t="))
     elif "of" in strippedLine:
-        defineConditions["outputFrequency"] = int(strippedLine.strip(" of="))
+        definedConditions["outputFrequency"] = int(strippedLine.strip(" of="))
 
 def moleculesEdit(strippedLine):
     list = strippedLine.split("=")
