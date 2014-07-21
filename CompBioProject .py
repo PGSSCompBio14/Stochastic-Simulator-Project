@@ -100,8 +100,6 @@ def outputEdit(strippedLine):
     else:
         initialSplit = strippedLine.split("=")
         plotString = initialSplit[1].strip()
-        print plotString
-        print plotString.upper().startswith("T")
         if plotString.upper().startswith("T"):
             definedConditions["Plot"] = True
         else:
