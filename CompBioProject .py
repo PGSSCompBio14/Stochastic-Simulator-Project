@@ -12,8 +12,8 @@ def plotOutput(times, currentMolecules, numberOfMolecules):
     moleculeData = []
     for molecule in numberOfMolecules:
         moleculeData = []
-        for integer in range(0, len(currentMolecules)):
-            moleculeData.append(currentMolecules[integer][molecule])
+        for timepoint in range(0, len(currentMolecules)):
+            moleculeData.append(currentMolecules[timepoint][molecule])
         plt.plot(times, moleculeData, label = molecule)
     plt.xlabel('Time Elapsed (seconds)')
     plt.ylabel('Number of Molecules')
@@ -190,7 +190,7 @@ def main():
     currentMolecules = [initialNumberOfMols]
     filesdict = open_output_files(outputMolecules)
     
-    while ((time < definedConditions["maxTime"]) & (iter < definedConditions["maxIter"])):
+    while ((time < definedConditions["maxTime"]) and (iter < definedConditions["maxIter"])):
             propensities = computeProp(numberOfMolecules, ka, reactions)
             totalProps = sum(propensities)
             if(totalProps != 0):
