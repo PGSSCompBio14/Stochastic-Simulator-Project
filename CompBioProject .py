@@ -17,9 +17,9 @@ import sys
 import sys.argv
 
 def plotOutput(times, currentMolecules, numberOfMolecules):
-"""
-Creates and displays a graph in a new window of concentration versus time with lines of data points for each molecule
-"""
+	"""
+	Creates and displays a graph in a new window of concentration versus time with lines of data points for each molecule
+	"""
     moleculeData = []
     for molecule in numberOfMolecules:
         moleculeData = []
@@ -33,9 +33,9 @@ Creates and displays a graph in a new window of concentration versus time with l
     plt.show()
     
 def computeProp(numberOfMolecules, k, reactions): 
-"""
-Finds the propensity of each reaction occurring, returns a list of the propensities
-"""
+	"""
+	Finds the propensity of each reaction occurring, returns a list of the propensities
+	"""
     props = []
     i = 0
     currentPropensity = 0
@@ -50,10 +50,10 @@ Finds the propensity of each reaction occurring, returns a list of the propensit
     return props
                             
 def reactUpdater(numberOfMolecules, reaction): 
-"""
-Subtracts the specified number of reactants and adds the products to the molecule amounts to represent a reaction 
-being carried out. 
-"""
+	"""
+	Subtracts the specified number of reactants and adds the products to the molecule amounts to represent a reaction 
+	being carried out. 
+	"""
     for sideOfReaction in reaction:
             for molecule in sideOfReaction:
                 numberOfMolecules[molecule] += sideOfReaction[molecule]
