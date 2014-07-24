@@ -43,7 +43,7 @@ Finds the propensity of each reaction occurring, returns a list of the propensit
             reactants = reaction[0]
             currentPropensity= k[i]
             for reactant in reactants:
-                for int in range(0, abs(reactants[key])):
+                for int in range(0, abs(reactants[reactant])):
                     currentPropensity *= numberOfMolecules[reactant] - int
             props.append(currentPropensity)
             i = i+1
