@@ -68,7 +68,7 @@ def initEdit(strippedLine):
     if "i" in strippedLine:
         definedConditions["maxIter"] = int(strippedLine.strip(" i="))
     elif "t" in strippedLine:
-        definedConditions["maxTime"] = int(strippedLine.strip(" t="))
+        definedConditions["maxTime"] = float(strippedLine.strip(" t="))
     elif "of" in strippedLine:
         definedConditions["outputFrequency"] = int(strippedLine.strip(" of="))
 
