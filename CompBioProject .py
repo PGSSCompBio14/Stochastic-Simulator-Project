@@ -71,14 +71,22 @@ def reactionsEdit(strippedLine):
     rxnDict = []
     reactantDict = {}
     productDict = {}
-    
-    initialSplit = strippedLine.split("[")	
 
-    reactionArray = initialSplit[0].split("->")
+    initialSplit = strippedLine.split("[")	
+    if "=" in strippedLine:
+        reactionArray = initialSplit[0].split("=")
+    else:
+        reactionArray = initialSplit[0].split("->")
     reactants = reactionArray[0]
     products = reactionArray[1]
-    reactantsFinal = reactants.split("+")
-    productsFinal = products.split("+")
+    if "*" in reactants:
+        reactantsFinal = reactants.split("*")
+    else:
+        reactantsFinal = reactants.split("+")
+    if "*" in products:
+        productsFinal = products.split("*")
+    else:
+        productsFinal = products.split("+")
     kavalue = initialSplit[1].strip(" ]")
     ka.append(float(kavalue))	
 
@@ -89,11 +97,16 @@ def reactionsEdit(strippedLine):
                     if digit.isdigit():
                             count+=1
                     else:
-                            if count == 0:
-                                    reactantDict[reactant[count:]] = -1
-                            else:
-                                    reactantDict[reactant[count:]] = -1*int(reactant[0:count])
-
+			    if reactant[count:] not in numberOfMolecules:
+				    print "Molecule used in one of the reactions that is not in molecule list"
+				    sys.exit()
+			    else:
+                            	    if count == 0:
+                                    	    reactantDict[reactant[count:]] = -1
+				    
+                            	    else:
+                                    	    reactantDict[reactant[count:]] = -1*int(reactant[0:count])
+				  
     for prod in productsFinal:
         product = prod.strip()
         count = 0
@@ -108,6 +121,7 @@ def reactionsEdit(strippedLine):
     rxnDict.append(reactantDict)
     rxnDict.append(productDict)
     reactions.append(rxnDict)
+
     
 def outputEdit(strippedLine):
     if "\"" in strippedLine:
