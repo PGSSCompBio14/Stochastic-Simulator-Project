@@ -1,15 +1,14 @@
-
 import matplotlib.pyplot as plt
 import random as rng
 import math
 from copy import *
 import sys
-import sys.argv
+
 
 def plotOutput(times, currentMolecules, numberOfMolecules):
-"""
-Creates and displays a graph in a new window of concentration versus time with lines of data points for each molecule
-"""
+    """
+    Creates and displays a graph in a new window of concentration versus time with lines of data points for each molecule
+    """
     moleculeData = []
     for molecule in numberOfMolecules:
         moleculeData = []
@@ -21,11 +20,11 @@ Creates and displays a graph in a new window of concentration versus time with l
     plt.title('Number of Molecules Vs. Time')
     plt.legend()
     plt.show()
-    
-def computeProp(numberOfMolecules, k, reactions): 
-"""
-Finds the propensity of each reaction occurring, returns a list of the propensities
-"""
+
+def computeProp(numberOfMolecules, k, reactions):
+    """
+    Finds the propensity of each reaction occurring, returns a list of the propensities
+    """
     props = []
     i = 0
     currentPropensity = 0
@@ -33,25 +32,25 @@ Finds the propensity of each reaction occurring, returns a list of the propensit
             reactants = reaction[0]
             currentPropensity= k[i]
             for reactant in reactants:
-                for counter in range(0, abs(reactants[reactant])):
+                for int in range(0, abs(reactants[reactant])):
                     currentPropensity *= numberOfMolecules[reactant] - int
             props.append(currentPropensity)
             i = i+1
     return props
-                            
-def reactUpdater(numberOfMolecules, reaction): 
-"""
-Subtracts the specified number of reactants and adds the products to the molecule amounts to represent a reaction 
-being carried out. 
-"""
+
+def reactUpdater(numberOfMolecules, reaction):
+    """
+    Subtracts the specified number of reactants and adds the products to the molecule amounts to represent a reaction
+    being carried out.
+    """
     for sideOfReaction in reaction:
             for molecule in sideOfReaction:
                 numberOfMolecules[molecule] += sideOfReaction[molecule]
-           
+
 
 def open_output_files(outputMolecules): #Chooses files and prepares them to output to
     files = {}
-    
+
     for key in outputMolecules:
             files[key] = open(outputMolecules[key], "w") #in future, possibly add conditions
 
@@ -78,12 +77,12 @@ def moleculesEdit(strippedLine):
     numberOfMolecules[list[0].strip()] = int(list[1])
 
 def reactionsEdit(strippedLine):
-    
+
     rxnDict = []
     reactantDict = {}
     productDict = {}
 
-    initialSplit = strippedLine.split("[")	
+    initialSplit = strippedLine.split("[")
     if "=" in strippedLine:
         reactionArray = initialSplit[0].split("=")
     else:
@@ -99,7 +98,7 @@ def reactionsEdit(strippedLine):
     else:
         productsFinal = products.split("+")
     kavalue = initialSplit[1].strip(" ]")
-    ka.append(float(kavalue))	
+    ka.append(float(kavalue))
 
     for reac in reactantsFinal:
             reactant = reac.strip()
@@ -108,16 +107,16 @@ def reactionsEdit(strippedLine):
                     if digit.isdigit():
                             count+=1
                     else:
-			    if reactant[count:] not in numberOfMolecules:
-				    print "Molecule used in one of the reactions that is not in molecule list"
-				    sys.exit(1)
-			    else:
-                            	    if count == 0:
-                                    	    reactantDict[reactant[count:]] = -1
-				    
-                            	    else:
-                                    	    reactantDict[reactant[count:]] = -1*int(reactant[0:count])
-				  
+                        if reactant[count:] not in numberOfMolecules:
+                            print "Molecule used in one of the reactions that is not in molecule list"
+                            sys.exit(1)
+                        else:
+                                if count == 0:
+                                        reactantDict[reactant[count:]] = -1
+
+                                else:
+                                        reactantDict[reactant[count:]] = -1*int(reactant[0:count])
+
     for prod in productsFinal:
         product = prod.strip()
         count = 0
@@ -133,7 +132,7 @@ def reactionsEdit(strippedLine):
     rxnDict.append(productDict)
     reactions.append(rxnDict)
 
-    
+
 def outputEdit(strippedLine):
     if "\"" in strippedLine:
         initialSplit = strippedLine.split("=")
@@ -150,7 +149,7 @@ def outputEdit(strippedLine):
 
 def Getinput():
     File = input("What is the file name? Use quotes around the File name: " )## specifies a file to use
-	
+
 def parse(): ## goes through text file and establishes initial conditions
     file = open(GetInput())
     blockCount = 0 ## keeps track of which section of the file is being parsed
@@ -193,10 +192,10 @@ def main():
             totalProps = sum(propensities)
             if(totalProps != 0):
                 rand1 = rng.random()
-                
+
                 tau = 1.0/totalProps*math.log(1/rand1)
                 time += tau
-                
+
                 rand2 = rng.random()
                 threshold = totalProps * rand2
                 summation = propensities[0]
@@ -207,16 +206,16 @@ def main():
                         count +=1
 
                 reactUpdater(numberOfMolecules, reactions[count - 1])
-            
+
             if(iter % definedConditions["outputFrequency"] == 0):
                     write_data_to_output(filesdict, time, numberOfMolecules, outputMolecules)
                     times.append(time)
                     nOM = deepcopy(numberOfMolecules)
                     currentMolecules.append(nOM)
 
-                    
+
             iter += 1
-            
+
     close_output_files(filesdict)
     plotOutput(times, currentMolecules, numberOfMolecules)
 
@@ -229,8 +228,4 @@ ka = []
 reactions = []
 
 main()
-
-
-
-
 
