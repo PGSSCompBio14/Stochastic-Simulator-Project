@@ -4,11 +4,13 @@ Stochastic-Simulator-Project
 Sample input file:
 
 INITIALIZATION:
+
 	i = 500
 	t = 20
 END
 
 MOLECULES:
+
 	A=2123
 	B = 1
 	C = 50
