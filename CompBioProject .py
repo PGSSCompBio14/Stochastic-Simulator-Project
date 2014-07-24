@@ -181,22 +181,24 @@ def parse(): ## goes through text file and establishes initial conditions
 
 def main():
     parse()
-    rng.seed(124213)
+    rng.seed(214213)
     time = 0.0
     iter = 0
     totalProps = 1
-    times = []
-    currentMolecules = []
+    times = [0]
+    initialNumberOfMols = deepcopy(numberOfMolecules)
+    currentMolecules = [initialNumberOfMols]
     filesdict = open_output_files(outputMolecules)
-    while ((time < definedConditions["maxTime"]) and (iter < definedConditions["maxIter"])):
+    
+    while ((time < definedConditions["maxTime"]) & (iter < definedConditions["maxIter"])):
             propensities = computeProp(numberOfMolecules, ka, reactions)
             totalProps = sum(propensities)
             if(totalProps != 0):
                 rand1 = rng.random()
-
+                
                 tau = 1.0/totalProps*math.log(1/rand1)
                 time += tau
-
+                
                 rand2 = rng.random()
                 threshold = totalProps * rand2
                 summation = propensities[0]
@@ -207,19 +209,18 @@ def main():
                         count +=1
 
                 reactUpdater(numberOfMolecules, reactions[count - 1])
-
+            
             if(iter % definedConditions["outputFrequency"] == 0):
                     write_data_to_output(filesdict, time, numberOfMolecules, outputMolecules)
                     times.append(time)
-                    nOM = deepcopy(numberOfMolecules)
-                    currentMolecules.append(nOM)
+                    copy_numberOfMols = deepcopy(numberOfMolecules)
+                    currentMolecules.append(copy_numberOfMols)
 
-
+                    
             iter += 1
-
+            
     close_output_files(filesdict)
     plotOutput(times, currentMolecules, numberOfMolecules)
-
 
 
 outputMolecules = {}
