@@ -5,8 +5,7 @@ from copy import *
 import sys
 
 def plotOutput(times, currentMolecules, numberOfMolecules):
-    moleculeData= []
-    print currentMolecules
+    moleculeData = []
     for molecule in numberOfMolecules:
         moleculeData = []
         for integer in range(0, len(currentMolecules)):
@@ -175,8 +174,7 @@ def main():
     times = []
     currentMolecules = []
     filesdict = open_output_files(outputMolecules)
-    
-    while ((time < definedConditions["maxTime"]) & (iter < definedConditions["maxIter"])):
+    while ((time < definedConditions["maxTime"]) and (iter < definedConditions["maxIter"])):
             propensities = computeProp(numberOfMolecules, ka, reactions)
             totalProps = sum(propensities)
             if(totalProps != 0):
