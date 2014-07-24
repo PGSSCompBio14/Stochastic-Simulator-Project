@@ -60,14 +60,22 @@ def reactionsEdit(strippedLine):
     rxnDict = []
     reactantDict = {}
     productDict = {}
-    
-    initialSplit = strippedLine.split("[")	
 
-    reactionArray = initialSplit[0].split("->")
+    initialSplit = strippedLine.split("[")	
+    if "=" in strippedLine:
+        reactionArray = initialSplit[0].split("=")
+    else:
+        reactionArray = initialSplit[0].split("->")
     reactants = reactionArray[0]
     products = reactionArray[1]
-    reactantsFinal = reactants.split("+")
-    productsFinal = products.split("+")
+    if "*" in reactants:
+        reactantsFinal = reactants.split("*")
+    else:
+        reactantsFinal = reactants.split("+")
+    if "*" in products:
+        productsFinal = products.split("*")
+    else:
+        productsFinal = products.split("+")
     kavalue = initialSplit[1].strip(" ]")
     ka.append(float(kavalue))	
 
