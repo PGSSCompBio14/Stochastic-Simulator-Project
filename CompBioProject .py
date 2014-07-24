@@ -12,8 +12,8 @@ def plotOutput(times, currentMolecules, numberOfMolecules):
     moleculeData = []
     for molecule in numberOfMolecules:
         moleculeData = []
-        for timepoint in range(0, len(currentMolecules)):
-            moleculeData.append(currentMolecules[timepoint][molecule])
+        for integer in range(0, len(currentMolecules)):
+            moleculeData.append(currentMolecules[integer][molecule])
         plt.plot(times, moleculeData, label = molecule)
     plt.xlabel('Time Elapsed (seconds)')
     plt.ylabel('Number of Molecules')
@@ -30,11 +30,10 @@ def computeProp(numberOfMolecules, k, reactions):
     currentPropensity = 0
     for reaction in reactions: #goes through and computes the propensity for each reaction
             reactants = reaction[0]
-	    currentPropensity= k[i]
-            for r_key in reactants:
-                for counter in range(0, abs(reactants[r_key])):
-                    currentPropensity *= numberOfMolecules[r_key] - counter
-		currentPropensity *= 1.0/abs(reactants[r_key])
+            currentPropensity= k[i]
+            for reactant in reactants:
+                for int in range(0, abs(reactants[reactant])):
+                    currentPropensity *= numberOfMolecules[reactant] - int
             props.append(currentPropensity)
             i = i+1
     return props
@@ -148,11 +147,11 @@ def outputEdit(strippedLine):
         else:
             definedConditions["Plot"] = False
 
-def getInput():
-    return input("What is the file name? Use quotes around the File name: " )## specifies a file to use
+def Getinput():
+    File = input("What is the file name? Use quotes around the File name: " )## specifies a file to use
 
 def parse(): ## goes through text file and establishes initial conditions
-    file = open(getInput())
+    file = open(GetInput())
     blockCount = 0 ## keeps track of which section of the file is being parsed
     for line in file.readlines():
         strippedLine = line.strip() ## deletes all white space before and after text
@@ -181,24 +180,22 @@ def parse(): ## goes through text file and establishes initial conditions
 
 def main():
     parse()
-    rng.seed(214213)
+    rng.seed(124213)
     time = 0.0
     iter = 0
     totalProps = 1
-    times = [0]
-    initialNumberOfMols = deepcopy(numberOfMolecules)
-    currentMolecules = [initialNumberOfMols]
+    times = []
+    currentMolecules = []
     filesdict = open_output_files(outputMolecules)
-    
     while ((time < definedConditions["maxTime"]) and (iter < definedConditions["maxIter"])):
             propensities = computeProp(numberOfMolecules, ka, reactions)
             totalProps = sum(propensities)
             if(totalProps != 0):
                 rand1 = rng.random()
-                
+
                 tau = 1.0/totalProps*math.log(1/rand1)
                 time += tau
-                
+
                 rand2 = rng.random()
                 threshold = totalProps * rand2
                 summation = propensities[0]
@@ -209,18 +206,19 @@ def main():
                         count +=1
 
                 reactUpdater(numberOfMolecules, reactions[count - 1])
-            
-            if(iter % definedConditions["outputFrequency"] == 0):
+
+            if(iter % definedConditions["outputFrequency"] == 0): # Saves data point when output frequency is reached
                     write_data_to_output(filesdict, time, numberOfMolecules, outputMolecules)
                     times.append(time)
-                    copy_numberOfMols = deepcopy(numberOfMolecules)
-                    currentMolecules.append(copy_numberOfMols)
+                    nOM = deepcopy(numberOfMolecules)
+                    currentMolecules.append(nOM)
 
-                    
+
             iter += 1
-            
+
     close_output_files(filesdict)
     plotOutput(times, currentMolecules, numberOfMolecules)
+
 
 
 outputMolecules = {}
