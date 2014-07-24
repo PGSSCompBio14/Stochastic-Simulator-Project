@@ -6,6 +6,7 @@ import sys
 import sys.argv
 
 def plotOutput(times, currentMolecules, numberOfMolecules):
+//Creates and displays a graph in a new window of concentration versus time with lines of data points for each molecule
     moleculeData = []
     for molecule in numberOfMolecules:
         moleculeData = []
@@ -18,7 +19,10 @@ def plotOutput(times, currentMolecules, numberOfMolecules):
     plt.legend()
     plt.show()
     
-def computeProp(numberOfMolecules, k, reactions): #Finds the propensity of each reaction occurring, returns a list of the propensities
+def computeProp(numberOfMolecules, k, reactions): 
+""
+Finds the propensity of each reaction occurring, returns a list of the propensities
+""
     props = []
     i = 0
     currentPropensity = 0
