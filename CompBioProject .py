@@ -3,6 +3,7 @@ import random as rng
 import math
 from copy import *
 import sys
+import sys.argv
 
 def plotOutput(times, currentMolecules, numberOfMolecules):
     moleculeData = []
