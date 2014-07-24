@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import random as rng
 import math
 from copy import *
+import sys
 
 def plotOutput(times, currentMolecules, numberOfMolecules):
     moleculeData= []
@@ -99,7 +100,7 @@ def reactionsEdit(strippedLine):
                     else:
 			    if reactant[count:] not in numberOfMolecules:
 				    print "Molecule used in one of the reactions that is not in molecule list"
-				    sys.exit()
+				    sys.exit(1)
 			    else:
                             	    if count == 0:
                                     	    reactantDict[reactant[count:]] = -1
