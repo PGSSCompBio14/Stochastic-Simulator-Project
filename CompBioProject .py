@@ -1,14 +1,4 @@
-"""
-B.o.s.s. 
 
-How to run this file:
-
-Save input file and this file to user desktop
-
-Change/ add your information to the input file in the format given by the README.md file on our github
-
-When prompted in the command window, input the name of the Data file with your information in it
-"""
 import matplotlib.pyplot as plt
 import random as rng
 import math
@@ -17,9 +7,9 @@ import sys
 import sys.argv
 
 def plotOutput(times, currentMolecules, numberOfMolecules):
-	"""
-	Creates and displays a graph in a new window of concentration versus time with lines of data points for each molecule
-	"""
+"""
+Creates and displays a graph in a new window of concentration versus time with lines of data points for each molecule
+"""
     moleculeData = []
     for molecule in numberOfMolecules:
         moleculeData = []
@@ -33,9 +23,9 @@ def plotOutput(times, currentMolecules, numberOfMolecules):
     plt.show()
     
 def computeProp(numberOfMolecules, k, reactions): 
-	"""
-	Finds the propensity of each reaction occurring, returns a list of the propensities
-	"""
+"""
+Finds the propensity of each reaction occurring, returns a list of the propensities
+"""
     props = []
     i = 0
     currentPropensity = 0
@@ -43,17 +33,17 @@ def computeProp(numberOfMolecules, k, reactions):
             reactants = reaction[0]
             currentPropensity= k[i]
             for reactant in reactants:
-                for int in range(0, abs(reactants[reactant])):
+                for counter in range(0, abs(reactants[reactant])):
                     currentPropensity *= numberOfMolecules[reactant] - int
             props.append(currentPropensity)
             i = i+1
     return props
                             
 def reactUpdater(numberOfMolecules, reaction): 
-	"""
-	Subtracts the specified number of reactants and adds the products to the molecule amounts to represent a reaction 
-	being carried out. 
-	"""
+"""
+Subtracts the specified number of reactants and adds the products to the molecule amounts to represent a reaction 
+being carried out. 
+"""
     for sideOfReaction in reaction:
             for molecule in sideOfReaction:
                 numberOfMolecules[molecule] += sideOfReaction[molecule]
