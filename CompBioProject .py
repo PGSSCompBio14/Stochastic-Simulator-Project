@@ -30,10 +30,11 @@ def computeProp(numberOfMolecules, k, reactions):
     currentPropensity = 0
     for reaction in reactions: #goes through and computes the propensity for each reaction
             reactants = reaction[0]
-            currentPropensity= k[i]
-            for reactant in reactants:
-                for int in range(0, abs(reactants[reactant])):
-                    currentPropensity *= numberOfMolecules[reactant] - int
+	    currentPropensity= k[i]
+            for r_key in reactants:
+                for counter in range(0, abs(reactants[r_key])):
+                    currentPropensity *= numberOfMolecules[r_key] - counter
+		currentPropensity *= 1.0/abs(reactants[r_key])
             props.append(currentPropensity)
             i = i+1
     return props
