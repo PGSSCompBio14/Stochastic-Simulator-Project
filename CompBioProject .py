@@ -52,7 +52,7 @@ def open_output_files(outputMolecules): #Chooses files and prepares them to outp
     files = {}
     
     for key in outputMolecules:
-            files[key] = open(outputMolecules[key], "w") #in future, possibly add conditions
+            files[key] = open(outputMolecules[key], "w") 
 
     return files
 
