@@ -12,8 +12,6 @@ def plotOutput(times, currentMolecules, numberOfMolecules):
         for integer in range(0, len(currentMolecules)):
             moleculeData.append(currentMolecules[integer][molecule])
         plt.plot(times, moleculeData, label = molecule)
-    #plt.plot(radius, area, label='Circle')
-    #plt.plot(radius, square, marker='o', linestyle='--', color='r', label='Square')
     plt.xlabel('Time Elapsed (seconds)')
     plt.ylabel('Number of Molecules')
     plt.title('Number of Molecules Vs. Time')
