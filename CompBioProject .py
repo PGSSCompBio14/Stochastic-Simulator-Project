@@ -18,20 +18,14 @@ def plotOutput(times, currentMolecules, numberOfMolecules, xaxis, yaxis):
                 moleculeData = []
                 for integer in range(0, len(currentMolecules)):
                     moleculeData.append(currentMolecules[integer][molecule])
-                print 'xmoldat ', xmoleculeData
-                print 'ymoldat ', moleculeData
                 plt.plot(xmoleculeData, moleculeData, label = molecule)
-                print 'data plotted'
         plt.xlabel('Time Elapsed (seconds)')
         plt.title('Concentration of Molecules Vs. Time')
         ylabel = 'Concentration of Molecules'
     else:
         for integer in range(0, len(currentMolecules)):
             ymoleculeData.append(currentMolecules[integer][yaxis])
-        print 'xmoldat ', xmoleculeData
-        print 'ymoldat ', ymoleculeData
         plt.plot(xmoleculeData, ymoleculeData)
-        print 'data plotted'
         xlabel = 'Concentration of ' + xaxis
         plt.xlabel(xlabel)
         title = 'Concentration of ' + yaxis + ' Vs. Concentration of ' + xaxis
@@ -238,8 +232,8 @@ def main():
 
             if(iter % definedConditions["outputFrequency"] == 0): # Saves data point when output frequency is reached
                     write_data_to_output(filesdict, time, numberOfMolecules, outputMolecules)
-                    nOM = deepcopy(numberOfMolecules)
-                    nOM["time"] = time
+                    copy_numberOfMolecules = deepcopy(numberOfMolecules)
+                    copy_numberOfMolecules["time"] = time
                     currentMolecules.append(nOM)
 
             iter += 1
