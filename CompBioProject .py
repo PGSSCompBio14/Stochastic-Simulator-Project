@@ -4,22 +4,44 @@ import math
 from copy import *
 import sys
 
-
-def plotOutput(times, currentMolecules, numberOfMolecules):
+def plotOutput(times, currentMolecules, numberOfMolecules, xaxis, yaxis):
     """
     Creates and displays a graph in a new window of concentration versus time with lines of data points for each molecule
     """
-    moleculeData = []
-    for molecule in numberOfMolecules:
-        moleculeData = []
+    xmoleculeData = []
+    ymoleculeData = []
+    for integer in range(0, len(currentMolecules)):
+        xmoleculeData.append(currentMolecules[integer][xaxis])
+    if yaxis == "all":#yaxis.equals("all"):
+        for molecule in numberOfMolecules:
+            if molecule != "time":#molecule.equals("time")
+                moleculeData = []
+                for integer in range(0, len(currentMolecules)):
+                    moleculeData.append(currentMolecules[integer][molecule])
+                print 'xmoldat ', xmoleculeData
+                print 'ymoldat ', moleculeData
+                plt.plot(xmoleculeData, moleculeData, label = molecule)
+                print 'data plotted'
+        plt.xlabel('Time Elapsed (seconds)')
+        plt.title('Concentration of Molecules Vs. Time')
+        ylabel = 'Concentration of Molecules'
+    else:
         for integer in range(0, len(currentMolecules)):
-            moleculeData.append(currentMolecules[integer][molecule])
-        plt.plot(times, moleculeData, label = molecule)
-    plt.xlabel('Time Elapsed (seconds)')
-    plt.ylabel('Number of Molecules')
-    plt.title('Number of Molecules vs. Time')
+            ymoleculeData.append(currentMolecules[integer][yaxis])
+        print 'xmoldat ', xmoleculeData
+        print 'ymoldat ', ymoleculeData
+        plt.plot(xmoleculeData, ymoleculeData)
+        print 'data plotted'
+        xlabel = 'Concentration of ' + xaxis
+        plt.xlabel(xlabel)
+        title = 'Concentration of ' + yaxis + ' Vs. Concentration of ' + xaxis
+        plt.title(title)
+        ylabel = 'Concentration of ' + yaxis
+
+    plt.ylabel(ylabel)
     plt.legend()
     plt.show()
+
 
 def computeProp(numberOfMolecules, k, reactions):
     """
@@ -186,6 +208,8 @@ def parse(): ## goes through text file and establishes initial conditions
 def main():
     parse()
     rng.seed(getRandomSeed())
+    xaxis = 'A'
+    yaxis = 'B'
     time = 0.0
     iter = 0
     totalProps = 1
@@ -214,10 +238,9 @@ def main():
 
             if(iter % definedConditions["outputFrequency"] == 0): # Saves data point when output frequency is reached
                     write_data_to_output(filesdict, time, numberOfMolecules, outputMolecules)
-                    times.append(time)
                     nOM = deepcopy(numberOfMolecules)
+                    nOM["time"] = time
                     currentMolecules.append(nOM)
-
 
             iter += 1
 
