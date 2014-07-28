@@ -20,12 +20,12 @@ END
 REACTIONS:
 
 	A + 2B -> C [1.25]
-
 	2C + 3B -> 3A [2.5]
 
 END
 
 OUTPUT:
+
 	A = "A.txt"
 	B = "B.txt"
 	C = "C.txt"
