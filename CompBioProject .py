@@ -222,7 +222,7 @@ def main():
             iter += 1
 
     close_output_files(filesdict)
-    if (definedConditions["Plot"] = true:
+    if (definedConditions["Plot"] == True:
     	plotOutput(times, currentMolecules, numberOfMolecules)
 
 
