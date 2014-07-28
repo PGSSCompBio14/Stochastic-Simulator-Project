@@ -149,11 +149,11 @@ def outputEdit(strippedLine):
         else:
             definedConditions["Plot"] = False
 
-def Getinput():
-    File = input("What is the file name? Use quotes around the File name: " )## specifies a file to use
+def getInput():
+    return input("What is the file name? Use quotes around the File name: " )## specifies a file to use
 
 def parse(): ## goes through text file and establishes initial conditions
-    file = open(GetInput())
+    file = open(getInput())
     blockCount = 0 ## keeps track of which section of the file is being parsed
     for line in file.readlines():
         strippedLine = line.strip() ## deletes all white space before and after text
