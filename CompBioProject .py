@@ -17,7 +17,7 @@ def plotOutput(times, currentMolecules, numberOfMolecules):
         plt.plot(times, moleculeData, label = molecule)
     plt.xlabel('Time Elapsed (seconds)')
     plt.ylabel('Number of Molecules')
-    plt.title('Number of Molecules Vs. Time')
+    plt.title('Number of Molecules vs. Time')
     plt.legend()
     plt.show()
 
