@@ -152,6 +152,9 @@ def outputEdit(strippedLine):
 def getInput():
     return input("What is the file name? Use quotes around the File name: " )## specifies a file to use
 
+def getRandomSeed():
+    return input("Enter a random seed:")
+
 def parse(): ## goes through text file and establishes initial conditions
     file = open(getInput())
     blockCount = 0 ## keeps track of which section of the file is being parsed
@@ -182,7 +185,7 @@ def parse(): ## goes through text file and establishes initial conditions
 
 def main():
     parse()
-    rng.seed(124213)
+    rng.seed(getRandomSeed())
     time = 0.0
     iter = 0
     totalProps = 1
