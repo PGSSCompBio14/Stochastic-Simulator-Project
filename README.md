@@ -29,7 +29,7 @@ OUTPUT:
 	A = "A.txt"
 	B = "B.txt"
 	C = "C.txt"
-	Pot = true
+	Plot = true
 
 
 
