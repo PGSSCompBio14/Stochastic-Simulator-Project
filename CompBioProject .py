@@ -216,7 +216,7 @@ def main():
     rng.seed(getRandomSeed())
     if len(plots) == 0:
     	xaxis = "time"
-    	taxis = "all"
+    	yaxis = "all"
     else:
     	xaxis = plots[0] 
     	yaxis = plots[1]
@@ -264,6 +264,7 @@ definedConditions = {}
 numberOfMolecules = {}
 ka = []
 reactions = []
+plots = []
 
 main()
 
