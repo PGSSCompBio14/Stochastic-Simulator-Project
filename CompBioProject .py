@@ -208,8 +208,12 @@ def parse(): ## goes through text file and establishes initial conditions
 def main():
     parse()
     rng.seed(getRandomSeed())
-    xaxis = plots[0] 
-    yaxis = plots[1]
+    if len(plots) == 0:
+    	xaxis = "time"
+    	taxis = "all"
+    else:
+    	xaxis = plots[0] 
+    	yaxis = plots[1]
     time = 0.0
     iter = 0
     totalProps = 1
