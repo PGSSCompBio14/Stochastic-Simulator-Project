@@ -7,9 +7,9 @@ Sample input file:
 
 INITIALIZATION:
 
-	i = 500   (Number of iterations)
+	i = 500   (maximum number of iterations)
 	t = 20    (duration time)
-	of = 1    (Output frequency)
+	of = 1    (output frequency)
 END
 
 MOLECULES:
@@ -23,16 +23,15 @@ REACTIONS:
 
 	A + 2B -> C [1.25]    (reaction with reaction rate)
 	2C + 3B -> 3A [2.5]
-
 END
 
 OUTPUT:
-			(name of output files)
-	A = "A.txt"
+	A = "A.txt"  (names of output files)
 	B = "B.txt"
 	C = "C.txt"
 	Plot = true
-
+	A vs. C      (which molecules will be graphed)
+END
 
 
 
