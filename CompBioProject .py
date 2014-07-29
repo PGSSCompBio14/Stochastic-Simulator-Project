@@ -155,6 +155,9 @@ def outputEdit(strippedLine):
     if "\"" in strippedLine:
         initialSplit = strippedLine.split("=")
         moleculeName = initialSplit[0].strip()
+        if moleculeName not in numberOfMolecules:
+        	print "Molecule used in one of the output files that is not in molecule list"
+        	sys.exit(1)
         outputFileName = initialSplit[1].strip(" \"")
         outputMolecules[moleculeName] = outputFileName
     elif "Plot" in strippedLine:
@@ -168,6 +171,9 @@ def outputEdit(strippedLine):
 	initialSplit = strippedLine.split("vs")
 	y_axis = initialSplit[0].strip()
 	x_axis = initialSplit[1].strip(" .")
+	if y_axis not in numberOfMolecules or x_axis not in number OfMolecules:
+		print "Molecule used for graph axis that is not in molecule list"
+        	sys.exit(1)
 	plots.append(x_axis) 
 	plots.append(y_axis)
 
