@@ -45,14 +45,14 @@ def computeProp(numberOfMolecules, k, reactions):
     i = 0
     currentPropensity = 0
     for reaction in reactions: #goes through and computes the propensity for each reaction
-            reactants = reaction[0]
-	    currentPropensity= k[i]
-            for r_key in reactants:
-                for counter in range(0, abs(reactants[r_key])):
-                    currentPropensity *= numberOfMolecules[r_key] - counter
+	reactants = reaction[0]
+	currentPropensity= k[i]
+	for r_key in reactants:
+		for counter in range(0, abs(reactants[r_key])):
+			currentPropensity *= numberOfMolecules[r_key] - counter
 		currentPropensity *= 1.0/abs(reactants[r_key])
-            props.append(currentPropensity)
-            i = i+1
+        props.append(currentPropensity)
+        i = i+1
     return props
 
 
@@ -157,13 +157,19 @@ def outputEdit(strippedLine):
         moleculeName = initialSplit[0].strip()
         outputFileName = initialSplit[1].strip(" \"")
         outputMolecules[moleculeName] = outputFileName
-    else:
+    elif "Plot" in strippedLine:
         initialSplit = strippedLine.split("=")
         plotString = initialSplit[1].strip()
         if plotString.upper().startswith("T"):
             definedConditions["Plot"] = True
         else:
             definedConditions["Plot"] = False
+    else:
+	initialSplit = strippedLine.split("vs")
+	y_axis = initialSplit[0].strip()
+	x_axis = initialSplit[1].strip(" .")
+	plots.append(x_axis) 
+	plots.append(y_axis)
 
 def getInput():
     return input("What is the file name? Use quotes around the File name: " )## specifies a file to use
@@ -202,8 +208,8 @@ def parse(): ## goes through text file and establishes initial conditions
 def main():
     parse()
     rng.seed(getRandomSeed())
-    xaxis = 'A'
-    yaxis = 'B'
+    xaxis = plots[0] 
+    yaxis = plots[1]
     time = 0.0
     iter = 0
     totalProps = 1
@@ -234,14 +240,13 @@ def main():
                     write_data_to_output(filesdict, time, numberOfMolecules, outputMolecules)
                     copy_numberOfMolecules = deepcopy(numberOfMolecules)
                     copy_numberOfMolecules["time"] = time
-                    currentMolecules.append(nOM)
+                    currentMolecules.append(copy_numberOfMolecules)
 
             iter += 1
 
     close_output_files(filesdict)
-    if (definedConditions["Plot"] == True:
-    	plotOutput(times, currentMolecules, numberOfMolecules)
-
+    if (definedConditions["Plot"] == True):
+    	plotOutput(times, currentMolecules, numberOfMolecules, xaxis, yaxis)
 
 
 outputMolecules = {}
