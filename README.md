@@ -13,6 +13,7 @@ INITIALIZATION:
 END
 
 MOLECULES:
+
 			(initial number of each "molecule")
 	A = 2123
 	B = 1
@@ -26,6 +27,7 @@ REACTIONS:
 END
 
 OUTPUT:
+
 	A = "A.txt"  (names of output files)
 	B = "B.txt"
 	C = "C.txt"
