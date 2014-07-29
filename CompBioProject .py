@@ -20,17 +20,17 @@ def plotOutput(times, currentMolecules, numberOfMolecules, xaxis, yaxis):
                     moleculeData.append(currentMolecules[integer][molecule])
                 plt.plot(xmoleculeData, moleculeData, label = molecule)
         plt.xlabel('Time Elapsed (seconds)')
-        plt.title('Concentration of Molecules Vs. Time')
-        ylabel = 'Concentration of Molecules'
+        plt.title('Number of Molecules Vs. Time')
+        ylabel = 'Number of Molecules'
     else:
         for integer in range(0, len(currentMolecules)):
             ymoleculeData.append(currentMolecules[integer][yaxis])
         plt.plot(xmoleculeData, ymoleculeData)
-        xlabel = 'Concentration of ' + xaxis
+        xlabel = 'Number of ' + xaxis
         plt.xlabel(xlabel)
-        title = 'Concentration of ' + yaxis + ' Vs. Concentration of ' + xaxis
+        title = 'Number of ' + yaxis + ' vs. Number of ' + xaxis
         plt.title(title)
-        ylabel = 'Concentration of ' + yaxis
+        ylabel = 'Number of ' + yaxis
 
     plt.ylabel(ylabel)
     plt.legend()
@@ -167,7 +167,7 @@ def outputEdit(strippedLine):
             definedConditions["Plot"] = True
         else:
             definedConditions["Plot"] = False
-    else:
+    elif "vs" in strippedLine:
 	initialSplit = strippedLine.split("vs")
 	y_axis = initialSplit[0].strip()
 	x_axis = initialSplit[1].strip(" .")
