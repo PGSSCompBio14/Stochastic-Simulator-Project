@@ -171,7 +171,7 @@ def outputEdit(strippedLine):
 	initialSplit = strippedLine.split("vs")
 	y_axis = initialSplit[0].strip()
 	x_axis = initialSplit[1].strip(" .")
-	if y_axis not in numberOfMolecules or x_axis not in number OfMolecules:
+	if y_axis not in numberOfMolecules or x_axis not in numberOfMolecules:
 		print "Molecule used for graph axis that is not in molecule list"
         	sys.exit(1)
 	plots.append(x_axis) 
