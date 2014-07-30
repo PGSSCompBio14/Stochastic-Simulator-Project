@@ -26,7 +26,10 @@ def plotOutput(times, currentMolecules, numberOfMolecules, xaxis, yaxis):
         for integer in range(0, len(currentMolecules)):
             ymoleculeData.append(currentMolecules[integer][yaxis])
         plt.plot(xmoleculeData, ymoleculeData)
-        xlabel = 'Number of ' + xaxis
+        if xaxis == "time":
+        	xlabel = "Time"
+        else:
+        	xlabel = 'Number of ' + xaxis
         plt.xlabel(xlabel)
         title = 'Number of ' + yaxis + ' vs. Number of ' + xaxis
         plt.title(title)
