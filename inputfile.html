@@ -13,6 +13,12 @@
     <img src="Logo/b5e853 logo200.gif" alt="BOSS" align=left style="margin: 20px">
   <body>
     <script>
+    function ClipBoard()
+{
+holdtext.innerText = copytext.innerText;
+Copied = holdtext.createTextRange();
+Copied.execCommand("Copy");
+}
       function displayFile() {
         var i = ITERATIONS.iterations.value;
         var t = ITERATIONS.duration.value;
@@ -65,6 +71,8 @@
         + "B = \"B.txt\"<br>"
         + "C = \"C.txt\"<br>"
         + "D = \"D.txt\"<br>"
+        + "E = \"E.txt\"<br>"
+        + "F = \"F.txt\"<br>"
         + "Plot = true<br>"
         + x + " vs. " + y + "<br>"
         + "END";
