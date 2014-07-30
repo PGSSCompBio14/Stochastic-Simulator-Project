@@ -13,10 +13,13 @@
     <img src="Logo/b5e853 logo200.gif" alt="BOSS" align=left style="margin: 20px">
   <body>
     <script>
-      function Copy() {
-        holdtext.innerText = copytext.innerText;
-        Copied = holdtext.createTextRange();
-        Copied.execCommand("Copy");
+      function download() {
+        var copy = document.createElement('a');
+        filename = "parse.txt"
+        text = document.getElementById("display");
+        copy.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        copy.setAttribute('download', filename);
+        copy.click();
       }
       function displayFile() {
         var i = ITERATIONS.iterations.value;
@@ -222,7 +225,7 @@
 <code name="display" id="display">
 Your code here.
 </code>
-<button onclick="copy()">Copy this Text</button>
+<button onclick="download()">Download Text File</button>
 </form>          
 
           </pre>
