@@ -14,38 +14,39 @@
   <body>
     <script>
       function displayFile() {
-        var i = document.getElementById("iterations");
-        var t = document.getElementById("duration");
-        var of = document.getElementById("frequency");
-        var A = document.getElementById("molA");
-        var B = document.getElementById("molB");
-        var C = document.getElementById("molC");
-        var D = document.getElementById("molD");
-        var E = document.getElementById("molE");
-        var F = document.getElementById("molF");
-        var x = document.getElementById("gmol1");
-        var y = document.getElementById("gmol2");
-        var r11 = document.getElementById("r11");
-        var r12 = document.getElementById("r12");
-        var r13 = document.getElementById("r13");
-        var p11 = document.getElementById("p11");
-        var p12 = document.getElementById("p12");
-        var p13 = document.getElementById("p13");
-        var r21 = document.getElementById("r21");
-        var r22 = document.getElementById("r22");
-        var r23 = document.getElementById("r23");
-        var p21 = document.getElementById("p21");
-        var p22 = document.getElementById("p22");
-        var p23 = document.getElementById("p23");
-        var r31 = document.getElementById("r31");
-        var r32 = document.getElementById("r32");
-        var r33 = document.getElementById("r33");
-        var p31 = document.getElementById("p31");
-        var p32 = document.getElementById("p32");
-        var p33 = document.getElementById("p33");
+        var i = ITERATIONS.iterations.value;
+        var t = ITERATIONS.duration.value;
+        var of = ITERATIONS.frequency.value;
+        var A = MOLECULES.molA.value;
+        var B = MOLECULES.molB.value;
+        var C = MOLECULES.molC.value;
+        var D = MOLECULES.molD.value;
+        var E = MOLECULES.molE.value;
+        var F = MOLECULES.molF.value;
+        var x = MOLECULES.gmol1.value;
+        var y = MOLECULES.gmol2.value;
+        var r11 = Reaction1.r1.value;
+        var r12 = Reaction1.r2.value;
+        var r13 = Reaction1.r3.value;
+        var p11 = Reaction1.p1.value;
+        var p12 = Reaction1.p2.value;
+        var p13 = Reaction1.p3.value;
+        var r21 = Reaction2.r1.value;
+        var r22 = Reaction2.r2.value;
+        var r23 = Reaction2.r3.value;
+        var p21 = Reaction2.p1.value;
+        var p22 = Reaction2.p2.value;
+        var p23 = Reaction2.p3.value;
+        var r31 = Reaction3.r1.value;
+        var r32 = Reaction3.r2.value;
+        var r33 = Reaction3.r3.value;
+        var p31 = Reaction3.p1.value;
+        var p32 = Reaction3.p2.value;
+        var p33 = Reaction3.p3.value;
         document.getElementById("display").innerHTML = 
         "INITIALIZATION:<br><br><pre> </pre>i = " + i 
-        + "<br><pre>  </pre>t = " + t 
+        + "<br><pre>  </pre>t = " + t; 
+        
         + "<br><pre>  </pre>of = " + of 
         + "<br>END<br><br>MOLECULES:<br><br><pre> </pre>A = " + A
         + "<br><pre>  </pre>B = " + B
@@ -92,36 +93,36 @@
             you need to use more than what is originally there, click "Add Reactant", "Add Product", or "Add Reaction"
             appropriately.
           </p>
-          <form id="ITERATIONS">
+          <form name="ITERATIONS" method="GET">
             <div>
               <label for="iterations">Number of Iterations: </label>
-              <input type="text" id="iterations" value="0" />
+              <input type="text" name="iterations" value="0" />
             </div>
             <div>
               <label for="duration">Duration time: </label>
-              <input type="text" id="duration"  value="0" />
+              <input type="text" name="duration"  value="0" />
             </div>
             <div>
               <label for="frequency">Output Frequency: </label>
-              <input type="text" id="frequency"  value="0" />
+              <input type="text" name`="frequency"  value="0" />
             </div>
           </form>  
-          <form id="MOLECULES">
+          <form name="MOLECULES" method="GET">
             <div>
               <label for="molA">Reactant A # of molecules: </label>
-              <input type="number" id="molA" min="0" max="100000" value="0"/>
+              <input type="number" name="molA" min="0" max="100000" value="0"/>
               <label for="molB">Reactant B # of molecules: </label>
-              <input type="number" id="molB" min="0" max="100000" value="0"/>
+              <input type="number" name="molB" min="0" max="100000" value="0"/>
               <label for="molC">Reactant C # of molecules: </label>
-              <input type="number" id="molC" min="0" max="100000" value="0"/>
+              <input type="number" name="molC" min="0" max="100000" value="0"/>
               <label for="molD">Reactant D # of molecules: </label>
-              <input type="number" id="molD" min="0" max="100000" value="0"/>
+              <input type="number" name="molD" min="0" max="100000" value="0"/>
               <label for="molE">Reactant E # of molecules: </label>
-              <input type="number" id="molE" min="0" max="100000" value="0"/>
+              <input type="number" name="molE" min="0" max="100000" value="0"/>
               <label for="molF">Reactant F # of molecules: </label>
-              <input type="number" id="molF" min="0" max="100000" value="0"/>
+              <input type="number" name="molF" min="0" max="100000" value="0"/>
               <label for="graphx">First Molecule to be graphed: </label>
-              <select id="gmol1">
+              <select id="gmol1" name="gmol1">
                 <option value="a" selected>A</option>
                 <option value="b">B</option>
                 <option value="c">C</option>
@@ -130,7 +131,7 @@
                 <option value="f">F</option>
               </select>
               <label for="graphy">Second Molecule to be graphed:</label>
-              <select id="gmol2">
+              <select id="gmol2" name="gmol2">
                 <option value="a">A</option>
                 <option value="b">B</option>
                 <option value="c">C</option>
@@ -140,67 +141,67 @@
               </select>
             </div>
           </form>
-          <form id="Reaction 1">
+          <form name="Reaction1" method="GET">
             <div>
               <p>Reaction 1</p>
               <label for="r1"> Reactant A </label>
-              <input type="text" id="r1" value="A"/>
+              <input type="text" name="r1" value="A"/>
               <label for="r2">&nbsp + Reactant B &nbsp</label>
-              <input type="text" id="r2" value="B"/>
+              <input type="text" name="r2" value="B"/>
               <label for="r3">&nbsp + Reactant C &nbsp</label>
-              <input type="text" id="r3" value="C"/>
+              <input type="text" name="r3" value="C"/>
               <label for="p1">&nbsp -> Product D &nbsp</label>
-              <input type="text" id="p1" value="D"/>
+              <input type="text" name="p1" value="D"/>
               <label for="p2">&nbsp + Product E &nbsp</label>
-              <input type="text" id="p2" value="E"/>
+              <input type="text" name="p2" value="E"/>
               <label for="p3">&nbsp + Product F &nbsp</label>
-              <input type="text" id="p3" value="F"/>
+              <input type="text" name="p3" value="F"/>
             </div>
             <div>
               <label for="rate1">Rate of Reaction 1</label>
-              <input type="text" id="rate1" value="0" />
+              <input type="text" name="rate1" value="0" />
             </div>
           </form>
-          <form id="Reaction 2">
+          <form name="Reaction2" method="GET">
             <div>
               <p>Reaction 2</p>
               <label for="r21">Reactant A </label>
-              <input type="text" id="r21" value="A"/>
+              <input type="text" name="r21" value="A"/>
               <label for="r22">&nbsp + Reactant B &nbsp</label>
-              <input type="text" id="r22" value="B"/>
+              <input type="text" name="r22" value="B"/>
               <label for="r23">&nbsp + Reactant C &nbsp</label>
-              <input type="text" id="r23" value="C"/>
+              <input type="text" name="r23" value="C"/>
               <label for="p21">&nbsp -> Product D &nbsp</label>
-              <input type="text" id="p21" value="D"/>
+              <input type="text" name="p21" value="D"/>
               <label for="p22">&nbsp + Product E &nbsp</label>
-              <input type="text" id="p22" value="E"/>
+              <input type="text" name="p22" value="E"/>
               <label for="p23">&nbsp + Product F &nbsp</label>
-              <input type="text" id="p23" value="F"/>
+              <input type="text" name="p23" value="F"/>
             </div>
             <div>
               <label for="rate2">Rate of Reaction 2</label>
-              <input type="text" id="rate2" value="0" />
+              <input type="text" name="rate2" value="0" />
             </div>
           </form>
-          <form id="Reaction 3">
+          <form name="Reaction3" method="GET">
             <div>
               <p>Reaction 3</p>
               <label for="r31">Reactant A </label>
-              <input type="text" id="r31" value="A"/>
+              <input type="text" name="r31" value="A"/>
               <label for="r32">&nbsp + Reactant B &nbsp</label>
-              <input type="text" id="r32" value="B"/>
+              <input type="text" name="r32" value="B"/>
               <label for="r33">&nbsp + Reactant C &nbsp</label>
-              <input type="text" id="r33" value="C"/>
+              <input type="text" name="r33" value="C"/>
               <label for="p31">&nbsp -> Product D &nbsp</label>
-              <input type="text" id="p31" value="D"/>
+              <input type="text" name="p31" value="D"/>
               <label for="p32">&nbsp + Product E &nbsp</label>
-              <input type="text" id="p32" value="E"/>
+              <input type="text" name="p32" value="E"/>
               <label for="p33">&nbsp + Product F &nbsp</label>
-              <input type="text" id="p33" value="F"/>
+              <input type="text" name="p33" value="F"/>
             </div>
             <div>
               <label for="rate3">Rate of Reaction 3</label>
-              <input type="text" id="rate3" value="0" />
+              <input type="text" name="rate3" value="0" />
             </div>
             <center><button onclick="displayFile()">Display</button></center>
           </form>
