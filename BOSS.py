@@ -19,8 +19,8 @@ def plotOutput(times, currentMolecules, numberOfMolecules, xaxis, yaxis):
                 for integer in range(0, len(currentMolecules)):
                     moleculeData.append(currentMolecules[integer][molecule])
                 plt.plot(xmoleculeData, moleculeData, label = molecule)
-        plt.xlabel('Time Elapsed (seconds)')
-        plt.title('Number of Molecules Vs. Time')
+        plt.xlabel('Time Elapsed')
+        plt.title('Number of Molecules vs. Time')
         ylabel = 'Number of Molecules'
     else:
         for integer in range(0, len(currentMolecules)):
