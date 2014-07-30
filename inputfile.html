@@ -13,10 +13,6 @@
     <img src="Logo/b5e853 logo200.gif" alt="BOSS" align=left style="margin: 20px">
   <body>
     <script>
-      function copy() {
-        
-      }
-      
       function displayFile() {
         var i = ITERATIONS.iterations.value;
         var t = ITERATIONS.duration.value;
@@ -74,8 +70,9 @@
         + "Plot = true<br>";
         if (x !== "all") {
           document.getElementById("display").innerHTML += x + " vs. " + y + "<br>";
-        }
+          }
         document.getElementById("display").innerHTML += "END";
+        }
     </script>
     <header>
       <div class="container">
