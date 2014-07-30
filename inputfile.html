@@ -46,7 +46,7 @@
         var p32 = Reaction3.p2.value;
         var p33 = Reaction3.p3.value;
         var rate3 = Reaction3.rate3.value;
-        document.getElementsByName("display").innerHTML += "INITIALIZATION:<br><br><pre> </pre>i = " + i 
+        document.getElementById("display").innerHTML = "INITIALIZATION:<br><br><pre> </pre>i = " + i 
         + "<br><pre>  </pre>t = " + t 
         + "<br><pre>  </pre>of = " + of 
         + "<br>END<br><br>MOLECULES:<br><br><pre> </pre>A = " + A
@@ -211,7 +211,7 @@
         <h3>
           <p>Your file will display below after you have clicked Display above. Copy the text into a text editor and save it as a .txt file.</p>
           <pre>
-            <code name="display">
+            <code name="display" id="display">
               Your code here.
             </code>
           </pre>
