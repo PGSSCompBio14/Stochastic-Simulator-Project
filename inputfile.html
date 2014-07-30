@@ -13,12 +13,11 @@
     <img src="Logo/b5e853 logo200.gif" alt="BOSS" align=left style="margin: 20px">
   <body>
     <script>
-    function ClipBoard()
-{
-holdtext.innerText = copytext.innerText;
-Copied = holdtext.createTextRange();
-Copied.execCommand("Copy");
-}
+      function Copy() {
+        holdtext.innerText = copytext.innerText;
+        Copied = holdtext.createTextRange();
+        Copied.execCommand("Copy");
+      }
       function displayFile() {
         var i = ITERATIONS.iterations.value;
         var t = ITERATIONS.duration.value;
@@ -219,9 +218,13 @@ Copied.execCommand("Copy");
         <h3>
           <p>Your file will display below after you have clicked Display above. Copy the text into a text editor and save it as a .txt file.</p>
           <pre>
+<form>
 <code name="display" id="display">
 Your code here.
 </code>
+<button onclick="copy()">Copy this Text</button>
+</form>          
+
           </pre>
           
         </h3>
