@@ -8,6 +8,12 @@ body {
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
 }
 
+img {
+ border: 2px solid #b5e853;
+}
+
+
+
 /* General & 'Reset' Stuff */
 
 .container {
