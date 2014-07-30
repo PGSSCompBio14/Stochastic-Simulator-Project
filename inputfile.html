@@ -13,14 +13,10 @@
     <img src="Logo/b5e853 logo200.gif" alt="BOSS" align=left style="margin: 20px">
   <body>
     <script>
-      function download() {
-        var copy = document.createElement('a');
-        filename = "parse.txt"
-        text = document.getElementById("display");
-        copy.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-        copy.setAttribute('download', filename);
-        copy.click();
+      function copy() {
+        
       }
+      
       function displayFile() {
         var i = ITERATIONS.iterations.value;
         var t = ITERATIONS.duration.value;
@@ -75,10 +71,11 @@
         + "D = \"D.txt\"<br>"
         + "E = \"E.txt\"<br>"
         + "F = \"F.txt\"<br>"
-        + "Plot = true<br>"
-        + x + " vs. " + y + "<br>"
-        + "END";
-      }
+        + "Plot = true<br>";
+        if (x !== "all") {
+          document.getElementById("display").innerHTML += x + " vs. " + y + "<br>";
+        }
+        document.getElementById("display").innerHTML += "END";
     </script>
     <header>
       <div class="container">
@@ -134,7 +131,8 @@
               <input type="number" name="molF" min="0" max="100000" value="0"/>
               <label for="graphx">First Molecule to be graphed: </label>
               <select id="gmol1" name="gmol1">
-                <option value="A" selected>A</option>
+                <option value="all" selected>All</option>
+                <option value="A">A</option>
                 <option value="B">B</option>
                 <option value="C">C</option>
                 <option value="D">D</option>
@@ -143,10 +141,11 @@
               </select>
               <label for="graphy">Second Molecule to be graphed:</label>
               <select id="gmol2" name="gmol2">
+                <option value="time" selected>Time</option>
                 <option value="A">A</option>
                 <option value="B">B</option>
                 <option value="C">C</option>
-                <option value="D" selected>D</option>
+                <option value="D">D</option>
                 <option value="E">E</option>
                 <option value="F">F</option>
               </select>
