@@ -12,6 +12,10 @@
   </head>
     <img src="Logo/b5e853 logo200.gif" alt="BOSS" align=left style="margin: 20px">
   <body>
+    <script>
+      function displayFile() {
+      }
+    </script>
     <header>
       <div class="container">
         <h1><a href="index.html" style="color: #b5e853; text-decoration: none">B.O.S.S.</h1>
@@ -101,8 +105,18 @@
               <input type="text" id="rate3" />
             </div>
             <button> type="button" </button>
-            <center><button type="submit" form="Reaction1","Reaction2","Reaction3" value="Submit">Submit</button></center>
+            <center><button onclick="displayFile()">Display</button></center>
           </form>
+        </h3>
+        <br>
+        <h3>
+          <p>Your file will display below after you have clicked display. Copy the text into a text editor and save it as a .txt file.</p>
+          <pre>
+            <code id="display">
+              Your code here.
+            </code>
+          </pre>
+          
         </h3>
       </section>
     </div>
