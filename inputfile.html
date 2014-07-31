@@ -17,7 +17,6 @@
         var i = PRESETS.iterations.value;
         var t = PRESETS.duration.value;
         var of = PRESETS.frequency.value;
-        var rnum = PRESETS.reactionNum.value;
         var A = MOLECULES.molA.value;
         var B = MOLECULES.molB.value;
         var C = MOLECULES.molC.value;
@@ -153,14 +152,32 @@
           s33 = "+";
           s34 = "+";
         }
+        if ((s11 !== "->") && (s12 !== "->") && (s13 !== "->") && (s14 !== "->") && (s15 !== "->"))) {
+          s12 = "+";
+        }
+        if ((s21 !== "->") && (s22 !== "->") && (s23 !== "->") && (s24 !== "->") && (s25 !== "->"))) {
+          s22 = "+";
+        }
+        if ((s31 !== "->") && (s32 !== "->") && (s33 !== "->") && (s34 !== "->") && (s35 !== "->"))) {
+          s32 = "+";
+        }
         document.getElementById("display").innerHTML = "INITIALIZATION:" + "<br>i = " + i 
         + "<br>t = " + t 
         + "<br>of = " + of 
         + "<br>END<br><br>MOLECULES:" + "<br>A = " + A
         + "<br>B = " + B
-        + "<br>C = " + C
-        + "<br>D = " + D
-        + "<br>END<br><br>REACTIONS:" + "<br>";
+        + "<br>C = " + C;
+        if (D !== "") {
+          document.getElementById("display").innerHTML += "<br>D = " + D;
+          if (E !== "") {
+            document.getElementById("display").innerHTML += "<br>E = " + E;
+            if (F !== "") {
+              document.getElementById("display").innerHTML += "<br>F = " + F;
+            }
+          }
+        }
+        
+        document.getElementById("display").innerHTML +="<br>END<br><br>REACTIONS:" + "<br>";
         document.getElementById("display").innerHTML += m11 + " " + s11 + " " + m12 + " " + s12 + " " + m13;
         if ((s13 !== "x") && (m14 !== "")) {
           document.getElementById("display").innerHTML += s13 + " " + m14;
@@ -197,14 +214,20 @@
         }
         document.getElementById("display").innerHTML +=" [" + rate3 + "]" + "<br>";
         
-        document.getElementById("display").innerHTML +="<br>END<br><br>OUTPUT:" + "<br>"
+        document.getElementById("display").innerHTML +="END<br><br>OUTPUT:" + "<br>"
         + "A = \"A.txt\"<br>"
         + "B = \"B.txt\"<br>"
-        + "C = \"C.txt\"<br>"
-        + "D = \"D.txt\"<br>"
-        + "E = \"E.txt\"<br>"
-        + "F = \"F.txt\"<br>"
-        + "Plot = true<br>";
+        + "C = \"C.txt\"<br>";
+        if (D !== "") {
+          document.getElementById("display").innerHTML += "D = \"D.txt\"<br>";
+          if (E !== "") {
+            document.getElementById("display").innerHTML += "E = \"E.txt\"<br>";
+            if (F !== "") {
+              document.getElementById("display").innerHTML += "F = \"F.txt\"<br>";
+            }
+          }
+        }
+        document.getElementById("display").innerHTML += "Plot = true<br>";
         if (x !== "all") {
           document.getElementById("display").innerHTML += x + " vs. " + y + "<br>";
           }
@@ -247,10 +270,6 @@
             <div>
               <label for="frequency">Output Frequency: </label>
               <input type="text" name="frequency"  value="0" />
-            </div>
-            <div>
-              <label for="reactions">Number of Reactions: </label>
-              <input type="number" name="reactionNum" min="1" max="30" value="1"/>
             </div>
           </form>  
           <form name="MOLECULES" method="GET">
