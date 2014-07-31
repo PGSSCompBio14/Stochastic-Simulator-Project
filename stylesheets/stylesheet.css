@@ -285,6 +285,10 @@ input, textarea {
   margin-bottom: 1px;
 }
 
+.reaction {
+  width: 50px;
+}
+
 input:focus, textarea:focus {
   border-color: #000;
 }
