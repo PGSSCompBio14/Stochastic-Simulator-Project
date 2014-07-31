@@ -8,8 +8,11 @@ body {
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
 }
 
-  
+.oop {
+ border: 2px solid #b5e853;
 }
+
+
 
 /* General & 'Reset' Stuff */
 
@@ -18,7 +21,6 @@ body {
   max-width: 600px;
   margin: 0 auto;
 }
-
 
 section {
   display: block;
@@ -250,7 +252,7 @@ a {
 /* Forms and Stuff like that */
 form {
   margin: 0 auto;
-  width: 700px;
+  width: 600px;
   padding: 1px;
   border: 1px solid #b5e853;
   border-radius: 1em;
@@ -280,10 +282,6 @@ input, textarea {
   box-sizing: border-box;
   border: 1px solid #b5e853;
   margin-bottom: 1px;
-}
-
-.reaction {
-  width: 50px;
 }
 
 input:focus, textarea:focus {
