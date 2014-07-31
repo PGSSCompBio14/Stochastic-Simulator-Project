@@ -17,6 +17,7 @@
         var i = PRESETS.iterations.value;
         var t = PRESETS.duration.value;
         var of = PRESETS.frequency.value;
+        var rnum = PRESETS.reactionNum.value;
         var A = MOLECULES.molA.value;
         var B = MOLECULES.molB.value;
         var C = MOLECULES.molC.value;
@@ -25,26 +26,41 @@
         var F = MOLECULES.molF.value;
         var x = GRAPH.gmol1.value;
         var y = GRAPH.gmol2.value;
-        var r11 = Reaction1.r1.value;
-        var r12 = Reaction1.r2.value;
-        var r13 = Reaction1.r3.value;
-        var p11 = Reaction1.p1.value;
-        var p12 = Reaction1.p2.value;
-        var p13 = Reaction1.p3.value;
+        var m11 = Reaction1.m1.value;
+        var s11 = Reaction1.sign1.value;
+        var m12 = Reaction1.m2.value;
+        var s12 = Reaction1.sign2.value;
+        var m13 = Reaction1.m3.value;
+        var s13 = Reaction1.sign3.value;
+        var m14 = Reaction1.m4.value;
+        var s14 = Reaction1.sign4.value;
+        var m15 = Reaction1.m5.value;
+        var s15 = Reaction1.sign5.value;
+        var m16 = Reaction1.m6.value;
         var rate1 = Reaction1.rate1.value;
-        var r21 = Reaction2.r1.value;
-        var r22 = Reaction2.r2.value;
-        var r23 = Reaction2.r3.value;
-        var p21 = Reaction2.p1.value;
-        var p22 = Reaction2.p2.value;
-        var p23 = Reaction2.p3.value;
+        var m21 = Reaction2.m1.value;
+        var s21 = Reaction2.sign1.value;
+        var m22 = Reaction2.m2.value;
+        var s22 = Reaction2.sign2.value;
+        var m23 = Reaction2.m3.value;
+        var s23 = Reaction2.sign3.value;
+        var m24 = Reaction2.m4.value;
+        var s24 = Reaction2.sign4.value;
+        var m25 = Reaction2.m5.value;
+        var s25 = Reaction2.sign5.value;
+        var m26 = Reaction2.m6.value;
         var rate2 = Reaction2.rate2.value;
-        var r31 = Reaction3.r1.value;
-        var r32 = Reaction3.r2.value;
-        var r33 = Reaction3.r3.value;
-        var p31 = Reaction3.p1.value;
-        var p32 = Reaction3.p2.value;
-        var p33 = Reaction3.p3.value;
+        var m31 = Reaction3.m1.value;
+        var s31 = Reaction3.sign1.value;
+        var m32 = Reaction3.m2.value;
+        var s32 = Reaction3.sign2.value;
+        var m33 = Reaction3.m3.value;
+        var s33 = Reaction3.sign3.value;
+        var m34 = Reaction3.m4.value;
+        var s34 = Reaction3.sign4.value;
+        var m35 = Reaction3.m5.value;
+        var s35 = Reaction3.sign5.value;
+        var m36 = Reaction3.m6.value;
         var rate3 = Reaction3.rate3.value;
         document.getElementById("display").innerHTML = "INITIALIZATION:" + "<br>i = " + i 
         + "<br>t = " + t 
@@ -162,21 +178,21 @@
             <div style="margin: 0px 5px">
               <p>Reaction 1</p>
               <center>
-              <input type="text" class="reaction" name="r1" value="A"/>
+              <input type="text" class="reaction" name="m1" value="A"/>
               
               <select id="sign1" name="sign1">
                 <option value="+">+</option>
                 <option value="->">-></option>
               </select>
               
-              <input type="text" class="reaction" name="r2" value="B"/>
+              <input type="text" class="reaction" name="m2" value="B"/>
               
               <select id="sign2" name="sign2">
                 <option value="->">-></option>
                 <option value="+">+</option>
               </select>
               
-              <input type="text" class="reaction" name="r3" value="C"/>
+              <input type="text" class="reaction" name="m3" value="C"/>
               
               <select id="sign3" name="sign3">
                 <option value="x" selected></option>
@@ -184,23 +200,23 @@
                 <option value="->">-></option>
               </select>
               
-              <input type="text" class="reaction" name="p1"/>
+              <input type="text" class="reaction" name="m4"/>
               
-              <select id="sign3" name="sign3">
+              <select id="sign3" name="sign4">
                 <option value="x" selected></option>
                 <option value="+">+</option>
                 <option value="->">-></option>
               </select>
               
-              <input type="text"  class="reaction" name="p2"/>
+              <input type="text"  class="reaction" name="m5"/>
               
-              <select id="sign3" name="sign3">
+              <select id="sign3" name="sign5">
                 <option value="x" selected></option>
                 <option value="+">+</option>
                 <option value="->">-></option>
               </select>
               
-              <input type="text"  class="reaction" name="p3"/>
+              <input type="text"  class="reaction" name="m6"/>
               </center>
             </div>
             <div>
@@ -212,21 +228,21 @@
             <div style="margin: 0px 5px">
               <p>Reaction 2</p>
               <center>
-              <input type="text" class="reaction" name="r1" value="A"/>
+              <input type="text" class="reaction" name="m1" value="A"/>
               
               <select id="sign1" name="sign1">
                 <option value="+">+</option>
                 <option value="->">-></option>
               </select>
               
-              <input type="text" class="reaction" name="r2" value="B"/>
+              <input type="text" class="reaction" name="m2" value="B"/>
               
               <select id="sign2" name="sign2">
                 <option value="->">-></option>
                 <option value="+">+</option>
               </select>
               
-              <input type="text" class="reaction" name="r3" value="C"/>
+              <input type="text" class="reaction" name="m3" value="C"/>
               
               <select id="sign3" name="sign3">
                 <option value="x" selected></option>
@@ -234,23 +250,23 @@
                 <option value="->">-></option>
               </select>
               
-              <input type="text" class="reaction" name="p1"/>
+              <input type="text" class="reaction" name="m4"/>
               
-              <select id="sign3" name="sign3">
+              <select id="sign4" name="sign4">
                 <option value="x" selected></option>
                 <option value="+">+</option>
                 <option value="->">-></option>
               </select>
               
-              <input type="text"  class="reaction" name="p2"/>
+              <input type="text"  class="reaction" name="m5"/>
               
-              <select id="sign3" name="sign3">
+              <select id="sign5" name="sign5">
                 <option value="x" selected></option>
                 <option value="+">+</option>
                 <option value="->">-></option>
               </select>
               
-              <input type="text"  class="reaction" name="p3"/>
+              <input type="text"  class="reaction" name="m6"/>
               </center>
             </div>
             <div>
@@ -262,21 +278,21 @@
             <div style="margin: 0px 5px">
               <p>Reaction 3</p>
               <center>
-              <input type="text" class="reaction" name="r1" value="A"/>
+              <input type="text" class="reaction" name="m1" value="A"/>
               
               <select id="sign1" name="sign1">
                 <option value="+">+</option>
                 <option value="->">-></option>
               </select>
               
-              <input type="text" class="reaction" name="r2" value="B"/>
+              <input type="text" class="reaction" name="m2" value="B"/>
               
               <select id="sign2" name="sign2">
                 <option value="->">-></option>
                 <option value="+">+</option>
               </select>
               
-              <input type="text" class="reaction" name="r3" value="C"/>
+              <input type="text" class="reaction" name="m3" value="C"/>
               
               <select id="sign3" name="sign3">
                 <option value="x" selected></option>
@@ -284,23 +300,23 @@
                 <option value="->">-></option>
               </select>
               
-              <input type="text" class="reaction" name="p1"/>
+              <input type="text" class="reaction" name="m4"/>
               
-              <select id="sign3" name="sign3">
+              <select id="sign4" name="sign4">
                 <option value="x" selected></option>
                 <option value="+">+</option>
                 <option value="->">-></option>
               </select>
               
-              <input type="text"  class="reaction" name="p2"/>
+              <input type="text"  class="reaction" name="m5"/>
               
-              <select id="sign3" name="sign3">
+              <select id="sign5" name="sign5">
                 <option value="x" selected></option>
                 <option value="+">+</option>
                 <option value="->">-></option>
               </select>
               
-              <input type="text"  class="reaction" name="p3"/>
+              <input type="text"  class="reaction" name="m6"/>
               </center>
             </div>
             <div>
