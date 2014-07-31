@@ -119,23 +119,23 @@
           <form name="MOLECULES" method="GET">
             <div>
               <p>Number of Molecules:
-              <label for="molA">Number of molecule A: </label>
+              <label for="molA"># of molecule A: </label>
               <input type="number" name="molA" min="0" max="100000" value="0"/>
-              <label for="molB">Number of molecule B: </label>
+              <label for="molB"># of molecule B: </label>
               <input type="number" name="molB" min="0" max="100000" value="0"/>
-              <label for="molC">Number of molecule C:  </label>
+              <label for="molC"># of molecule C:  </label>
               <input type="number" name="molC" min="0" max="100000" value="0"/>
-              <label for="molD">Number of molecule D: </label>
+              <label for="molD"># of molecule D: </label>
               <input type="number" name="molD" min="0" max="100000"/>
-              <label for="molE">Number of molecule E: </label>
+              <label for="molE"># of molecule E: </label>
               <input type="number" name="molE" min="0" max="100000"/>
-              <label for="molF">Number of molecule F: </label>
+              <label for="molF"># of molecule F: </label>
               <input type="number" name="molF" min="0" max="100000"/>
             </div>
           </form>
           <form name="GRAPH" method="GET">
             <div>
-              <label for="graphx">First Molecule to be graphed: </label>
+              <label for="graphx">Y-axis variable: </label>
               <select id="gmol1" name="gmol1">
                 <option value="all" selected>All</option>
                 <option value="A">A</option>
@@ -145,7 +145,7 @@
                 <option value="E">E</option>
                 <option value="F">F</option>
               </select>
-              <label for="graphy">Second Molecule to be graphed:</label>
+              <label for="graphy">X-axis variable</label>
               <select id="gmol2" name="gmol2">
                 <option value="time" selected>Time</option>
                 <option value="A">A</option>
@@ -161,21 +161,21 @@
             <div>
               <p>Reaction 1</p>
               
-              <input type="text" name="r1" value="A"/>
+              <input type="text" class="reaction" name="r1" value="A"/>
               
               <select id="sign1" name="sign1">
                 <option value="+">+</option>
                 <option value="->">-></option>
               </select>
               
-              <input type="text" name="r2" value="B"/>
+              <input type="text" class="reaction" name="r2" value="B"/>
               
               <select id="sign2" name="sign2">
                 <option value="->">-></option>
                 <option value="+">+</option>
               </select>
               
-              <input type="text" name="r3" value="C"/>
+              <input type="text" class="reaction" name="r3" value="C"/>
               
               <select id="sign3" name="sign3">
                 <option value="x" selected></option>
@@ -183,7 +183,7 @@
                 <option value="->">-></option>
               </select>
               
-              <input type="text" name="p1" value="D"/>
+              <input type="text" class="reaction" name="p1" value="D"/>
               
               <select id="sign3" name="sign3">
                 <option value="x" selected></option>
@@ -191,7 +191,7 @@
                 <option value="->">-></option>
               </select>
               
-              <input type="text" name="p2" value="E"/>
+              <input type="text"  class="reaction" name="p2" value="E"/>
               
               <select id="sign3" name="sign3">
                 <option value="x" selected></option>
@@ -199,7 +199,7 @@
                 <option value="->">-></option>
               </select>
               
-              <input type="text" name="p3" value="F"/>
+              <input type="text"  class="reaction" name="p3" value="F"/>
             </div>
             <div>
               <label for="rate1">Rate of Reaction 1</label>
