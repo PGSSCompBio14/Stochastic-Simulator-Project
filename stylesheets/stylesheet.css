@@ -8,12 +8,6 @@ body {
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
 }
 
-.oop {
- border: 2px solid #b5e853;
-}
-
-
-
 /* General & 'Reset' Stuff */
 
 .container {
@@ -252,7 +246,7 @@ a {
 /* Forms and Stuff like that */
 form {
   margin: 0 auto;
-  width: 600px;
+  width: 400px;
   padding: 1px;
   border: 1px solid #b5e853;
   border-radius: 1em;
