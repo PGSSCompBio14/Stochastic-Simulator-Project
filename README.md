@@ -13,9 +13,8 @@ INITIALIZATION:
 END
 
 MOLECULES:
-
-			(initial number of each "molecule")
-	A = 2123
+			
+	A = 2123	(initial number of each "molecule")
 	B = 1
 	C = 50
 END
