@@ -14,17 +14,17 @@
   <body>
     <script>
       function displayFile() {
-        var i = ITERATIONS.iterations.value;
-        var t = ITERATIONS.duration.value;
-        var of = ITERATIONS.frequency.value;
+        var i = PRESETS.iterations.value;
+        var t = PRESETS.duration.value;
+        var of = PRESETS.frequency.value;
         var A = MOLECULES.molA.value;
         var B = MOLECULES.molB.value;
         var C = MOLECULES.molC.value;
         var D = MOLECULES.molD.value;
         var E = MOLECULES.molE.value;
         var F = MOLECULES.molF.value;
-        var x = MOLECULES.gmol1.value;
-        var y = MOLECULES.gmol2.value;
+        var x = GRAPH.gmol1.value;
+        var y = GRAPH.gmol2.value;
         var r11 = Reaction1.r1.value;
         var r12 = Reaction1.r2.value;
         var r13 = Reaction1.r3.value;
@@ -98,7 +98,7 @@
             you need to use more than what is originally there, click "Add Reactant", "Add Product", or "Add Reaction"
             appropriately.
           </p>
-          <form name="ITERATIONS" method="GET">
+          <form name="PRESETS" method="GET">
             <div>
               <label for="iterations">Number of Iterations: </label>
               <input type="text" name="iterations" value="0" />
@@ -113,23 +113,28 @@
             </div>
             <div>
               <label for="reactions">Number of Reactions: </label>
-              <input type="number" name="reactionNum" min="1" max="30"/>
+              <input type="number" name="reactionNum" min="1" max="30" value="1"/>
             </div>
           </form>  
           <form name="MOLECULES" method="GET">
             <div>
-              <label for="molA">Reactant A # of molecules: </label>
+              <p>Number of Molecules:
+              <label for="molA">Number of molecule A: </label>
               <input type="number" name="molA" min="0" max="100000" value="0"/>
-              <label for="molB">Reactant B # of molecules: </label>
+              <label for="molB">Number of molecule B: </label>
               <input type="number" name="molB" min="0" max="100000" value="0"/>
-              <label for="molC">Reactant C # of molecules: </label>
+              <label for="molC">Number of molecule C:  </label>
               <input type="number" name="molC" min="0" max="100000" value="0"/>
-              <label for="molD">Reactant D # of molecules: </label>
-              <input type="number" name="molD" min="0" max="100000" value="0"/>
-              <label for="molE">Reactant E # of molecules: </label>
-              <input type="number" name="molE" min="0" max="100000" value="0"/>
-              <label for="molF">Reactant F # of molecules: </label>
-              <input type="number" name="molF" min="0" max="100000" value="0"/>
+              <label for="molD">Number of molecule D: </label>
+              <input type="number" name="molD" min="0" max="100000"/>
+              <label for="molE">Number of molecule E: </label>
+              <input type="number" name="molE" min="0" max="100000"/>
+              <label for="molF">Number of molecule F: </label>
+              <input type="number" name="molF" min="0" max="100000"/>
+            </div>
+          </form>
+          <form name="GRAPH" method="GET">
+            <div>
               <label for="graphx">First Molecule to be graphed: </label>
               <select id="gmol1" name="gmol1">
                 <option value="all" selected>All</option>
@@ -155,17 +160,45 @@
           <form name="Reaction1" method="GET">
             <div>
               <p>Reaction 1</p>
-              <label for="r1"> Reactant A </label>
+              
               <input type="text" name="r1" value="A"/>
-              <label for="r2">&nbsp + Reactant B &nbsp</label>
+              
+              <select id="sign1" name="sign1">
+                <option value="+">+</option>
+                <option value="->">-></option>
+              </select>
+              
               <input type="text" name="r2" value="B"/>
-              <label for="r3">&nbsp + Reactant C &nbsp</label>
+              
+              <select id="sign2" name="sign2">
+                <option value="->">-></option>
+                <option value="+">+</option>
+              </select>
+              
               <input type="text" name="r3" value="C"/>
-              <label for="p1">&nbsp -> Product D &nbsp</label>
+              
+              <select id="sign3" name="sign3">
+                <option value="x" selected></option>
+                <option value="+">+</option>
+                <option value="->">-></option>
+              </select>
+              
               <input type="text" name="p1" value="D"/>
-              <label for="p2">&nbsp + Product E &nbsp</label>
+              
+              <select id="sign3" name="sign3">
+                <option value="x" selected></option>
+                <option value="+">+</option>
+                <option value="->">-></option>
+              </select>
+              
               <input type="text" name="p2" value="E"/>
-              <label for="p3">&nbsp + Product F &nbsp</label>
+              
+              <select id="sign3" name="sign3">
+                <option value="x" selected></option>
+                <option value="+">+</option>
+                <option value="->">-></option>
+              </select>
+              
               <input type="text" name="p3" value="F"/>
             </div>
             <div>
