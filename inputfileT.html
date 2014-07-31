@@ -13,7 +13,9 @@
     <img src="Logo/b5e853 logo200.gif" alt="BOSS" align=left style="margin: 20px">
   <body>
     <script>
-      document.cookie='Rnum=' + Rnum;
+      function saveCookie() {
+      document.cookie='Rnum=' + document.getElementsByName(Rnum);
+      }
     </script>
     <header>
       <div class="container">
@@ -42,6 +44,8 @@
             </p>
             <label for="Rnum">Number of Reactions:</label>
             <input type="number" name="Rnum" min="1" max="30" value="1"/>
+            <label for="Xnum">Number of </label>
+            <button onclick="saveCookie()">Next</button>
           </form>
         </h3>
       </section>
