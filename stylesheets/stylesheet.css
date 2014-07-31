@@ -254,8 +254,7 @@ a {
 /* Forms and Stuff like that */
 form {
   margin: 0 auto;
-  width: 600px;
-  padding: 1px;
+  width: 750px;
   border: 1px solid #b5e853;
   border-radius: 1em;
 }
