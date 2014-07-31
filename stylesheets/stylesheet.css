@@ -17,6 +17,13 @@ body {
   margin: 0 auto;
 }
 
+.inputfile {
+  width: 90%;
+  max-width: 750px;
+  margin: 0 auto;
+  
+}
+
 section {
   display: block;
   margin: 0 0 20px 0;
