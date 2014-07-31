@@ -13,9 +13,66 @@
     <img src="Logo/b5e853 logo200.gif" alt="BOSS" align=left style="margin: 20px">
   <body>
     <script>
-      function saveCookie() {
-      document.cookie='Rnum=' + document.getElementsByName(Rnum);
-      }
+      function displayFile() {
+        var i = ITERATIONS.iterations.value;
+        var t = ITERATIONS.duration.value;
+        var of = ITERATIONS.frequency.value;
+        var A = MOLECULES.molA.value;
+        var B = MOLECULES.molB.value;
+        var C = MOLECULES.molC.value;
+        var D = MOLECULES.molD.value;
+        var E = MOLECULES.molE.value;
+        var F = MOLECULES.molF.value;
+        var x = MOLECULES.gmol1.value;
+        var y = MOLECULES.gmol2.value;
+        var r11 = Reaction1.r1.value;
+        var r12 = Reaction1.r2.value;
+        var r13 = Reaction1.r3.value;
+        var p11 = Reaction1.p1.value;
+        var p12 = Reaction1.p2.value;
+        var p13 = Reaction1.p3.value;
+        var rate1 = Reaction1.rate1.value;
+        var r21 = Reaction2.r1.value;
+        var r22 = Reaction2.r2.value;
+        var r23 = Reaction2.r3.value;
+        var p21 = Reaction2.p1.value;
+        var p22 = Reaction2.p2.value;
+        var p23 = Reaction2.p3.value;
+        var rate2 = Reaction2.rate2.value;
+        var r31 = Reaction3.r1.value;
+        var r32 = Reaction3.r2.value;
+        var r33 = Reaction3.r3.value;
+        var p31 = Reaction3.p1.value;
+        var p32 = Reaction3.p2.value;
+        var p33 = Reaction3.p3.value;
+        var rate3 = Reaction3.rate3.value;
+        document.getElementById("display").innerHTML = "INITIALIZATION:" + "<br>i = " + i 
+        + "<br>t = " + t 
+        + "<br>of = " + of 
+        + "<br>END<br><br>MOLECULES:" + "<br>A = " + A
+        + "<br>B = " + B
+        + "<br>C = " + C
+        + "<br>D = " + D
+        + "<br>END<br><br>REACTIONS:" + "<br>"
+        + r11 + " + " + r12 + " + " + r13 + " -> "
+        + p11 + " + " + p12 + " + " + p13 + " [" + rate1 + "]" + "<br>"
+        + r21 + " + " + r22 + " + " + r23 + " -> "
+        + p21 + " + " + p22 + " + " + p23 + " [" + rate2 + "]" + "<br>"
+        + r31 + " + " + r32 + " + " + r33 + " -> "
+        + p31 + " + " + p32 + " + " + p33 + " [" + rate3 + "]"
+        + "<br>END<br><br>OUTPUT:" + "<br>"
+        + "A = \"A.txt\"<br>"
+        + "B = \"B.txt\"<br>"
+        + "C = \"C.txt\"<br>"
+        + "D = \"D.txt\"<br>"
+        + "E = \"E.txt\"<br>"
+        + "F = \"F.txt\"<br>"
+        + "Plot = true<br>";
+        if (x !== "all") {
+          document.getElementById("display").innerHTML += x + " vs. " + y + "<br>";
+          }
+        document.getElementById("display").innerHTML += "END";
+        }
     </script>
     <header>
       <div class="container">
@@ -34,20 +91,141 @@
         <h3>
           <p>
             Instructions: This tool will give you the correctly formatted text to be put into your parse.txt file.
-            It will not give you an actual .txt file. You will have to copy and paste the text into a word processor
+            It will not give you an actual .txt file. You will have to copy and paste the text into a word processor 
             like Word, Notepad, or TextEdit and name the file correctly as Parse with a .txt extension. If you prefer
-            to do this manually, the ReadMe file on our GitHub page provides an example format.
+            to do this manually, the ReadMe file on our GitHub page provides an example format. You do not need to put
+            in more than one reaction, or even more than one reactant, but the spaces are provided for you to use. If
+            you need to use more than what is originally there, click "Add Reactant", "Add Product", or "Add Reaction"
+            appropriately.
           </p>
-          <form name="formset" method="GET">
-            <p>
-              Set up Form:
-            </p>
-            <label for="Rnum">Number of Reactions:</label>
-            <input type="number" name="Rnum" min="1" max="30" value="1"/>
-            <label for="Xnum">Number of </label>
-            <button onclick="saveCookie()">Next</button>
+          <form name="ITERATIONS" method="GET">
+            <div>
+              <label for="iterations">Number of Iterations: </label>
+              <input type="text" name="iterations" value="0" />
+            </div>
+            <div>
+              <label for="duration">Duration time: </label>
+              <input type="text" name="duration"  value="0" />
+            </div>
+            <div>
+              <label for="frequency">Output Frequency: </label>
+              <input type="text" name="frequency"  value="0" />
+            </div>
+          </form>  
+          <form name="MOLECULES" method="GET">
+            <div>
+              <label for="molA">Reactant A # of molecules: </label>
+              <input type="number" name="molA" min="0" max="100000" value="0"/>
+              <label for="molB">Reactant B # of molecules: </label>
+              <input type="number" name="molB" min="0" max="100000" value="0"/>
+              <label for="molC">Reactant C # of molecules: </label>
+              <input type="number" name="molC" min="0" max="100000" value="0"/>
+              <label for="molD">Reactant D # of molecules: </label>
+              <input type="number" name="molD" min="0" max="100000" value="0"/>
+              <label for="molE">Reactant E # of molecules: </label>
+              <input type="number" name="molE" min="0" max="100000" value="0"/>
+              <label for="molF">Reactant F # of molecules: </label>
+              <input type="number" name="molF" min="0" max="100000" value="0"/>
+              <label for="graphx">First Molecule to be graphed: </label>
+              <select id="gmol1" name="gmol1">
+                <option value="all" selected>All</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="E">E</option>
+                <option value="F">F</option>
+              </select>
+              <label for="graphy">Second Molecule to be graphed:</label>
+              <select id="gmol2" name="gmol2">
+                <option value="time" selected>Time</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="E">E</option>
+                <option value="F">F</option>
+              </select>
+            </div>
           </form>
+          <form name="Reaction1" method="GET">
+            <div>
+              <p>Reaction 1</p>
+              <label for="r1"> Reactant A </label>
+              <input type="text" name="r1" value="A"/>
+              <label for="r2">&nbsp + Reactant B &nbsp</label>
+              <input type="text" name="r2" value="B"/>
+              <label for="r3">&nbsp + Reactant C &nbsp</label>
+              <input type="text" name="r3" value="C"/>
+              <label for="p1">&nbsp -> Product D &nbsp</label>
+              <input type="text" name="p1" value="D"/>
+              <label for="p2">&nbsp + Product E &nbsp</label>
+              <input type="text" name="p2" value="E"/>
+              <label for="p3">&nbsp + Product F &nbsp</label>
+              <input type="text" name="p3" value="F"/>
+            </div>
+            <div>
+              <label for="rate1">Rate of Reaction 1</label>
+              <input type="text" name="rate1" value="0" />
+            </div>
+          </form>
+          <form name="Reaction2" method="GET">
+            <div>
+              <p>Reaction 2</p>
+              <label for="r1">Reactant A </label>
+              <input type="text" name="r1" value="A"/>
+              <label for="r2">&nbsp + Reactant B &nbsp</label>
+              <input type="text" name="r2" value="B"/>
+              <label for="r3">&nbsp + Reactant C &nbsp</label>
+              <input type="text" name="r3" value="C"/>
+              <label for="p1">&nbsp -> Product D &nbsp</label>
+              <input type="text" name="p1" value="D"/>
+              <label for="p2">&nbsp + Product E &nbsp</label>
+              <input type="text" name="p2" value="E"/>
+              <label for="p3">&nbsp + Product F &nbsp</label>
+              <input type="text" name="p3" value="F"/>
+            </div>
+            <div>
+              <label for="rate2">Rate of Reaction 2</label>
+              <input type="text" name="rate2" value="0" />
+            </div>
+          </form>
+          <form name="Reaction3" method="GET">
+            <div>
+              <p>Reaction 3</p>
+              <label for="r1">Reactant A </label>
+              <input type="text" name="r1" value="A"/>
+              <label for="r2">&nbsp + Reactant B &nbsp</label>
+              <input type="text" name="r2" value="B"/>
+              <label for="r3">&nbsp + Reactant C &nbsp</label>
+              <input type="text" name="r3" value="C"/>
+              <label for="p1">&nbsp -> Product D &nbsp</label>
+              <input type="text" name="p1" value="D"/>
+              <label for="p2">&nbsp + Product E &nbsp</label>
+              <input type="text" name="p2" value="E"/>
+              <label for="p3">&nbsp + Product F &nbsp</label>
+              <input type="text" name="p3" value="F"/>
+            </div>
+            <div>
+              <label for="rate3">Rate of Reaction 3</label>
+              <input type="text" name="rate3" value="0" />
+            </div>
+          </form>
+          <center><button onclick="displayFile()">Display</button></center>
         </h3>
+        <br>
+        <h3>
+          <p>Your file will display below after you have clicked Display above. Copy the text into a text editor and save it as a .txt file.</p>
+<pre>
+<code name="display" id="display">
+Your code here.
+</code>
+</pre>
+          
+        </h3>
+        <h4>
+          <center><a href="index.html" style="color: #b5e853">Home</a></center>
+        </h4>
       </section>
     </div>
   </body>
