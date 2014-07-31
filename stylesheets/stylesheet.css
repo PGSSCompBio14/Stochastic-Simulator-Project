@@ -271,7 +271,7 @@ label2 {
 
 input, textarea {
   font: 1em "Bitstream Vera Sans Mono";
-  width: 100px;
+  width: 70px;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   border: 1px solid #b5e853;
