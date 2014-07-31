@@ -62,6 +62,97 @@
         var s35 = Reaction3.sign5.value;
         var m36 = Reaction3.m6.value;
         var rate3 = Reaction3.rate3.value;
+        //This is the if section...
+        if (s11 == "->") {
+          s12 = "+";
+          s13 = "+";
+          s14 = "+";
+          s15 = "+";
+        }
+        if (s12 == "->") {
+          s11 = "+";
+          s13 = "+";
+          s14 = "+";
+          s15 = "+";
+        }
+        if (s13 == "->") {
+          s11 = "+";
+          s12 = "+";
+          s14 = "+";
+          s15 = "+";
+        }
+        if (s14 == "->") {
+          s11 = "+";
+          s12 = "+";
+          s13 = "+";
+          s15 = "+";
+        }
+        if (s15 == "->") {
+          s11 = "+";
+          s12 = "+";
+          s13 = "+";
+          s14 = "+";
+        }
+        if (s21 == "->") {
+          s22 = "+";
+          s23 = "+";
+          s24 = "+";
+          s25 = "+";
+        }
+        if (s22 == "->") {
+          s21 = "+";
+          s23 = "+";
+          s24 = "+";
+          s25 = "+";
+        }
+        if (s23 == "->") {
+          s21 = "+";
+          s22 = "+";
+          s24 = "+";
+          s25 = "+";
+        }
+        if (s24 == "->") {
+          s21 = "+";
+          s22 = "+";
+          s23 = "+";
+          s25 = "+";
+        }
+        if (s25 == "->") {
+          s21 = "+";
+          s22 = "+";
+          s23 = "+";
+          s24 = "+";
+        }
+        if (s31 == "->") {
+          s32 = "+";
+          s33 = "+";
+          s34 = "+";
+          s35 = "+";
+        }
+        if (s32 == "->") {
+          s31 = "+";
+          s33 = "+";
+          s34 = "+";
+          s35 = "+";
+        }
+        if (s33 == "->") {
+          s31 = "+";
+          s32 = "+";
+          s34 = "+";
+          s35 = "+";
+        }
+        if (s34 == "->") {
+          s31 = "+";
+          s32 = "+";
+          s33 = "+";
+          s35 = "+";
+        }
+        if (s35 == "->") {
+          s31 = "+";
+          s32 = "+";
+          s33 = "+";
+          s34 = "+";
+        }
         document.getElementById("display").innerHTML = "INITIALIZATION:" + "<br>i = " + i 
         + "<br>t = " + t 
         + "<br>of = " + of 
@@ -69,14 +160,44 @@
         + "<br>B = " + B
         + "<br>C = " + C
         + "<br>D = " + D
-        + "<br>END<br><br>REACTIONS:" + "<br>"
-        + r11 + " + " + r12 + " + " + r13 + " -> "
-        + p11 + " + " + p12 + " + " + p13 + " [" + rate1 + "]" + "<br>"
-        + r21 + " + " + r22 + " + " + r23 + " -> "
-        + p21 + " + " + p22 + " + " + p23 + " [" + rate2 + "]" + "<br>"
-        + r31 + " + " + r32 + " + " + r33 + " -> "
-        + p31 + " + " + p32 + " + " + p33 + " [" + rate3 + "]"
-        + "<br>END<br><br>OUTPUT:" + "<br>"
+        + "<br>END<br><br>REACTIONS:" + "<br>";
+        document.getElementById("display").innerHTML += m11 + " " + s11 + " " + m12 + " " + s12 + " " + m13;
+        if ((s13 !== "x") && (m14 !== "")) {
+          document.getElementById("display").innerHTML += s13 + " " + m14;
+          if ((s14 !== "x") && (m15 !== "")) {
+            document.getElementById("display").innerHTML += s14 + " " + m15;
+            if ((s15 !== "x") && (m16 !== "")) {
+              document.getElementById("display").innerHTML += s15 + " " + m16;
+            }
+          }
+        }
+        document.getElementById("display").innerHTML +=" [" + rate1 + "]" + "<br>";
+        
+        document.getElementById("display").innerHTML += m21 + " " + s21 + " " + m22 + " " + s22 + " " + m23;
+        if ((s13 !== "x") && (m14 !== "")) {
+          document.getElementById("display").innerHTML += s23 + " " + m24;
+          if ((s14 !== "x") && (m15 !== "")) {
+            document.getElementById("display").innerHTML += s24 + " " + m25;
+            if ((s15 !== "x") && (m16 !== "")) {
+              document.getElementById("display").innerHTML += s25 + " " + m26;
+            }
+          }
+        }
+        document.getElementById("display").innerHTML +=" [" + rate2 + "]" + "<br>";
+        
+        document.getElementById("display").innerHTML += m31 + " " + s31 + " " + m32 + " " + s32 + " " + m33;
+        if ((s13 !== "x") && (m14 !== "")) {
+          document.getElementById("display").innerHTML += s33 + " " + m34;
+          if ((s14 !== "x") && (m15 !== "")) {
+            document.getElementById("display").innerHTML += s34 + " " + m35;
+            if ((s15 !== "x") && (m16 !== "")) {
+              document.getElementById("display").innerHTML += s35 + " " + m36;
+            }
+          }
+        }
+        document.getElementById("display").innerHTML +=" [" + rate3 + "]" + "<br>";
+        
+        document.getElementById("display").innerHTML +="<br>END<br><br>OUTPUT:" + "<br>"
         + "A = \"A.txt\"<br>"
         + "B = \"B.txt\"<br>"
         + "C = \"C.txt\"<br>"
