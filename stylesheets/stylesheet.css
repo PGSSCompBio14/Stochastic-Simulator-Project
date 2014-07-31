@@ -271,11 +271,15 @@ label2 {
 
 input, textarea {
   font: 1em "Bitstream Vera Sans Mono";
-  width: 70px;
+  width: 150px;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   border: 1px solid #b5e853;
   margin-bottom: 1px;
+}
+
+.reaction {
+  width: 50px;
 }
 
 input:focus, textarea:focus {
