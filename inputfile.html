@@ -37,6 +37,7 @@
         var s15 = Reaction1.sign5.value;
         var m16 = Reaction1.m6.value;
         var rate1 = Reaction1.rate1.value;
+        var user3 = Reaction2.user2.value;
         var m21 = Reaction2.m1.value;
         var s21 = Reaction2.sign1.value;
         var m22 = Reaction2.m2.value;
@@ -49,6 +50,7 @@
         var s25 = Reaction2.sign5.value;
         var m26 = Reaction2.m6.value;
         var rate2 = Reaction2.rate2.value;
+        var user3 = Reaction2.user3.value;
         var m31 = Reaction3.m1.value;
         var s31 = Reaction3.sign1.value;
         var m32 = Reaction3.m2.value;
@@ -190,29 +192,33 @@
         }
         document.getElementById("display").innerHTML +=" [" + rate1 + "]" + "<br>";
         
-        document.getElementById("display").innerHTML += m21 + " " + s21 + " " + m22 + " " + s22 + " " + m23;
-        if ((s13 !== "x") && (m14 !== "")) {
-          document.getElementById("display").innerHTML += s23 + " " + m24;
-          if ((s14 !== "x") && (m15 !== "")) {
-            document.getElementById("display").innerHTML += s24 + " " + m25;
-            if ((s15 !== "x") && (m16 !== "")) {
-              document.getElementById("display").innerHTML += s25 + " " + m26;
+        if (user2 == "true") {
+          document.getElementById("display").innerHTML += m21 + " " + s21 + " " + m22 + " " + s22 + " " + m23;
+          if ((s13 !== "x") && (m14 !== "")) {
+            document.getElementById("display").innerHTML += s23 + " " + m24;
+            if ((s14 !== "x") && (m15 !== "")) {
+              document.getElementById("display").innerHTML += s24 + " " + m25;
+              if ((s15 !== "x") && (m16 !== "")) {
+                document.getElementById("display").innerHTML += s25 + " " + m26;
+              }
             }
           }
+          document.getElementById("display").innerHTML +=" [" + rate2 + "]" + "<br>";
         }
-        document.getElementById("display").innerHTML +=" [" + rate2 + "]" + "<br>";
         
-        document.getElementById("display").innerHTML += m31 + " " + s31 + " " + m32 + " " + s32 + " " + m33;
-        if ((s13 !== "x") && (m14 !== "")) {
-          document.getElementById("display").innerHTML += s33 + " " + m34;
-          if ((s14 !== "x") && (m15 !== "")) {
-            document.getElementById("display").innerHTML += s34 + " " + m35;
-            if ((s15 !== "x") && (m16 !== "")) {
-              document.getElementById("display").innerHTML += s35 + " " + m36;
+        if (user3 == "true") {
+          document.getElementById("display").innerHTML += m31 + " " + s31 + " " + m32 + " " + s32 + " " + m33;
+          if ((s13 !== "x") && (m14 !== "")) {
+            document.getElementById("display").innerHTML += s33 + " " + m34;
+            if ((s14 !== "x") && (m15 !== "")) {
+              document.getElementById("display").innerHTML += s34 + " " + m35;
+              if ((s15 !== "x") && (m16 !== "")) {
+                document.getElementById("display").innerHTML += s35 + " " + m36;
+              }
             }
           }
+          document.getElementById("display").innerHTML +=" [" + rate3 + "]" + "<br>";
         }
-        document.getElementById("display").innerHTML +=" [" + rate3 + "]" + "<br>";
         
         document.getElementById("display").innerHTML +="END<br><br>OUTPUT:" + "<br>"
         + "A = \"A.txt\"<br>"
@@ -366,6 +372,8 @@
           <form name="Reaction2" method="GET">
             <div style="margin: 0px 5px">
               <p>Reaction 2</p>
+              <p>Use this reaction?</p>
+              <input type="radio" name="user2" value="true"></input>
               <center>
               <input type="text" class="reaction" name="m1" value="A"/>
               
@@ -416,6 +424,8 @@
           <form name="Reaction3" method="GET">
             <div style="margin: 0px 5px">
               <p>Reaction 3</p>
+              <p>Use this reaction?</p>
+              <input type="radio" name="user3" value="true"></input>
               <center>
               <input type="text" class="reaction" name="m1" value="A"/>
               
