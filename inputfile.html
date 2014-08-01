@@ -13,6 +13,10 @@
     <img src="Logo/b5e853 logo200.gif" alt="BOSS" align=left style="margin: 20px">
   <body>
     <script>
+      function ClipBoard() {
+        Copied = display.createTextRange();
+        Copied.execCommand("Copy");
+      }
       function displayFile() {
         var i = PRESETS.iterations.value;
         var t = PRESETS.duration.value;
@@ -480,6 +484,7 @@
 <code name="display" id="display">
 Your input file text here.
 </code>
+<center><button onclick="ClipBoard()">Copy Text</button></center>
 </pre>
           
         </h3>
