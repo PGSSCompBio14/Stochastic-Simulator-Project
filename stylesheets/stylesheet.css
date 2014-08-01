@@ -285,6 +285,10 @@ input, textarea {
   margin-bottom: 1px;
 }
 
+.checkbox {
+  display: inline-block;
+}
+
 .reaction {
   width: 50px;
 }
