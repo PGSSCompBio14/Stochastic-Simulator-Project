@@ -37,7 +37,7 @@
         var s15 = Reaction1.sign5.value;
         var m16 = Reaction1.m6.value;
         var rate1 = Reaction1.rate1.value;
-        var user2 = Reaction2.user2.value;
+        var user2 = Reaction2.user2.checked;
         var m21 = Reaction2.m1.value;
         var s21 = Reaction2.sign1.value;
         var m22 = Reaction2.m2.value;
@@ -50,7 +50,7 @@
         var s25 = Reaction2.sign5.value;
         var m26 = Reaction2.m6.value;
         var rate2 = Reaction2.rate2.value;
-        var user3 = Reaction2.user3.value;
+        var user3 = Reaction3.user3.checked;
         var m31 = Reaction3.m1.value;
         var s31 = Reaction3.sign1.value;
         var m32 = Reaction3.m2.value;
@@ -192,7 +192,7 @@
         }
         document.getElementById("display").innerHTML +=" [" + rate1 + "]" + "<br>";
         
-        if (user2 == "true") {
+        if (user2) {
           document.getElementById("display").innerHTML += m21 + " " + s21 + " " + m22 + " " + s22 + " " + m23;
           if ((s13 !== "x") && (m14 !== "")) {
             document.getElementById("display").innerHTML += s23 + " " + m24;
@@ -206,7 +206,7 @@
           document.getElementById("display").innerHTML +=" [" + rate2 + "]" + "<br>";
         }
         
-        if (user3 == "true") {
+        if (user3) {
           document.getElementById("display").innerHTML += m31 + " " + s31 + " " + m32 + " " + s32 + " " + m33;
           if ((s13 !== "x") && (m14 !== "")) {
             document.getElementById("display").innerHTML += s33 + " " + m34;
